@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* html{
+    font-size: 62.5%;
+} */
+
+li {
+    list-style: none;
+
+}
+
+.mainNav {
+    width: 100%;
+    height: 70px;
+    display: grid;
+    position: fixed;
+    background-color: #da7b83;
+    z-index: 99;
+    grid-template-columns: 5rem 1fr 2fr 1fr 5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.logo {
+    display: grid;
+    grid-column: 2/3;
+    justify-content: start;
+    align-items: center;
+
+}
+
+.logo>h2 {
+    font-size: 35px;
+    border: 1px solid black;
+    padding: 3px;
+    background: linear-gradient(rgb(168, 147, 147) rgb(159, 159, 185) rgb(166, 203, 166));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgb(78, 78, 109);
+}
+
+.menuLink {
+    grid-column: 3/4;
+}
+
+.menuLink>ul {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
+.menuLink>ul>li {
+    font-size: 18px;
+    font-weight: 450;
+    cursor: pointer;
+    font-family: Roboto;
+}
+
+.iconsContainer {
+    grid-column: 4/5;
+
+
+
+
+}
+
+.iconsContainer>ul {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 3fr repeat(3, 1fr);
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.search {
+    width: 30px;
+    height: 30px;
+}
+
+.cart {
+    width: 30px;
+    height: 30px;
+}
+
+.profile {
+    width: 30px;
+    height: 30px;
+}
+
+.iconsContainer>ul>li {
+    text-align: right;
+}
+
+.hamburgerMenu {
+    display: none;
+}
+
+/* media queries */
+@media screen and (min-width:1080px) {
+
+    .menuLink>ul {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        align-items: center;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width:1080px) {
+    .mainNav {
+        grid-template-columns: 2rem 3fr 3fr 2fr 2rem;
+    }
+
+}
+
+@media screen and (max-width:998px) {
+    .mainNav {
+        grid-template-columns: 2rem 2fr 1fr 2rem;
+    }
+
+    .menuLink {
+        display: none;
+    }
+
+    .logo {
+        height: 5rem;
+    }
+
+    .mobileMenuLink {
+        grid-column: 2/4;
+        position: relative;
+        z-index: 99;
+    }
+
+    .mobileMenuLink {
+        background-color: white;
+        height: 15rem;
+        display: grid;
+        grid-column: 2/5;
+        align-items: center;
+        padding-left: 2rem;
+        transition: all 2s linear;
+        transform-origin: top;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    }
+
+
+    .mobileMenuLink>ul {
+        height: 15rem;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: start;
+    }
+    .mobileMenuLink>ul>li{
+        font-size: 18px;
+        font-weight: 450px;
+    }
+
+    .iconsContainer {
+        grid-row: 1/2;
+        grid-column: 3/5;
+        display: flex;
+        justify-items: end;
+        align-items: center;
+        transition: all 2s linear;
+    }
+
+
+    .iconsContainer>ul {
+        width: 250px;
+        height: 5rem;
+        display: flex;
+        justify-content: space-around;
+        justify-self: end;
+        align-items: center;
+    }
+
+    .hamburgerMenu {
+        margin-left: 25px;
+        margin-right: 20px;
+    }
+
+    .iconsContainer .hamburgerMenu {
+        display: block;
+
+    }
+}
+
+@media screen and (max-width:798px) {
+    .mainNav {
+        height: 5rem;
+        grid-template-columns: 1rem 2fr 1fr 1rem;
+
+
+    }
+
+
+    .iconsContainer {
+
+        height: 5rem;
+        display: flex;
+        justify-content: space-between;
+        justify-self: end;
+        align-items: center;
+
+    }
+
+    .iconsContainer>ul {
+        width: 300px;
+    }
+
+    .iconsContainer .hamburgerMenu {
+        display: block;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .mainNav {
+        height: 5rem;
+        grid-template-columns: 1rem 4fr 1fr 1fr 1rem;
+
+    }
+
+    .iconsContainer {
+        height: 5rem;
+        display: flex;
+        justify-self: end;
+        align-items: center;
+    }
+
+    .iconsContainer .iconsDesktop {
+        height: 0;
+        display: none;
+    }
+
+    .iconsContainer .hamburgerMenu {
+        display: block;
+    }
+}
