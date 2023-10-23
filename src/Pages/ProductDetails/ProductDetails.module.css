@@ -1,0 +1,15 @@
+.productDetails{
+    background-color: rgb(rgb(206, 190, 190), rgb(164, 166, 164), rgb(214, 214, 223));
+    width: 100vw;
+   
+    max-width: 100%;
+    padding: 6vmax;
+    box-sizing: border-box;
+    display: flex;
+   
+}
+
+.productDetails>div{
+    border:2px solid red;
+    width: 50%;
+}

@@ -56,3 +56,11 @@ font: 300 1.5vmax Roboto;
     border-bottom: 2px solid black;
     margin: 5vmax auto;
 }
+.container{
+    display: flex;
+    margin: 2vmax;
+    width: 80vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}

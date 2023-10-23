@@ -11,13 +11,13 @@ const options ={
 }
 const Products = ({product}) => {
   return (
-    <Link  className={styles.productCart} to={product._id}>
-    <img src="https://m.media-amazon.com/images/I/71rjzNln29L._AC_UL320_.jpg" alt="" />
+    <Link  className={styles.productCard} to={`/products/${product._id}`}>
+    <img src={product.images[0].url} alt={product.name} />
     <p>{product.name}</p>
     <div>
         <ReactStars  {...options}/> <span>(256 reviews)</span>
     </div>
-    <span>{product.price}</span>
+    <span>₹-{product.price}</span>
     </Link>
   )
 }

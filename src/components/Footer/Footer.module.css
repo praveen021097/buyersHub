@@ -154,3 +154,47 @@
     height: 25px;
     color: white;
 }
+
+@media screen and (max-width:600px) {
+    .footerContainer{
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        padding: 10px;
+    }
+    .leftPart{
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+
+    }
+    .rightPart{
+        width: 100%;
+        margin: auto;
+        gap: 20px;
+        flex-direction: column;
+    }
+    .mobirise{
+        margin: auto;
+        text-align: center;
+        width: 100%;
+    }
+    .recentNews{
+        width: 100%;
+        text-align: center;
+    }
+    .links{
+        width: 100%;
+        text-align: center;
+    }
+    .socialMediaIcons{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .rightPart{
+        width: 60%;
+    }
+}
