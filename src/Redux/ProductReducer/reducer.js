@@ -5,7 +5,10 @@ const initialState = {
     products :[],
     isLoading:false,
     isError:false,
-    productsCount:0
+    productsCount:0,
+    totalPages:0,
+    resultPerPage:0,
+    filterProductCount:0
 };
 
 export const reducer =(state=initialState,action) =>{
@@ -20,10 +23,13 @@ export const reducer =(state=initialState,action) =>{
         case types.GET_PRODUCT_DATA_SUCCESS:
             return{
                 ...state,
-                products:payload,
+                products:payload.products,
                 isLoading:false,
                 isError:false,
-                productsCount:payload.length
+                productsCount:payload.totalProducts,
+                totalPages :payload.totalPages,
+                resultPerPage:payload.resultPerPage,
+                filterProductCount:payload.filterProductCount
             }
         case types.GET_PRODUCT_DATA_FAILURE:
             return {

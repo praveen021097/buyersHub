@@ -1,0 +1,23 @@
+.reviewCard{
+    width: 25vmax;
+
+    height: 20vmax;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 2px solid rgba(82, 77, 77, 0.721);
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    
+}
+.reviewCard:hover{
+    transform:rotateY(-16deg);
+}
+.profileIcon{
+    width: 70px;
+    height: 70px;
+    color: rgba(120, 113, 113, 0.695);
+}

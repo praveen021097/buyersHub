@@ -5,6 +5,7 @@ import { getProducts } from '../../Redux/ProductReducer/action';
 import { useParams } from 'react-router-dom';
 import Carousel from 'react-material-ui-carousel'
 import ReactStars from "react-rating-stars-component";
+import ReviewCard from '../../components/ReviewCard/ReviewCard';
 const options ={
     edit:false,
     color:"rgba(20,20,20,0.1)",
@@ -33,10 +34,10 @@ const ProductDetails = () => {
   return (
     <>
     <div className={styles.productDetails}>
-            <div>
-                <Carousel>
+            <div className={styles.imageDiv}>
+                <Carousel className={styles.Carousel} >
                     {
-                        currentProduct.images && currentProduct.images.map((item,i)=>(<img src={item.url} alt={item.url} key={i} />))
+                        currentProduct.images && currentProduct.images.map((item,i)=>(<img src={item.url} alt={item.url} key={i} className={styles.CarouselImage} />))
                     }
                 </Carousel>
             </div>
@@ -50,11 +51,11 @@ const ProductDetails = () => {
                         <span>({currentProduct.numOfReviews} Reviews)</span>
                 </div>
                 <div className={styles.detailsBlock3}>
-                        <h1>{`${currentProduct.price}`}</h1>
+                        <h1>{`₹${currentProduct.price}`}</h1>
                         <div className={styles.detailsBlock31}>
                             <div className={styles.detailsBlock311}>
                                 <button>-</button>
-                                <input type="number" value={1} />
+                                <input type="number" value={"1"} />
                                 <button>+</button>
                             </div>
                             <button>Add To Cart</button>
@@ -69,9 +70,22 @@ const ProductDetails = () => {
                 <div className={styles.detailsBlock4}>
                     Description : <p>{currentProduct.description}</p>
                 </div>
-                <button>Submit Review</button>
+                <button className={styles.submitReview}>Submit Review</button>
             </div>
     </div>
+    <h3 className={styles.reviewsHeading}>REVIEWS</h3>
+    {
+        currentProduct.reviews && currentProduct.reviews[0]?(
+            <div className={styles.reviews}>
+                    {
+                         currentProduct.reviews && currentProduct.reviews.map((review)=><ReviewCard  review={review} />)
+                    }
+                    
+            </div>
+        ):(
+            <div>No Reviews Yet</div>
+        )
+    }
     </>
   )
 }
