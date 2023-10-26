@@ -1,16 +1,19 @@
 .productHeading{
-    margin: 2vmax auto;
+    margin: 4vmax auto;
     width: 15vw;
     border-bottom:1px solid black;
-    padding: 2vmax;
+    padding: 1vmax;
     text-align: center;
-    font: 500 1.5vmax "Roboto";
+    font: 500 2.5vmax "Roboto";
+   
 }
 .products{
     display: flex;
     flex-wrap: wrap;
     padding: 0 5vmax;
-    justify-content: center;
+    justify-content: right;
+    min-height: 40vh;
+   
 }
 
 .paginationBox {
@@ -69,4 +72,41 @@
     position: absolute;
     top: 10vmax;
     left: 4vmax;
+    z-index: 99;
+    border: 1px solid red;
+  }
+
+  .categoryBox {
+    padding: 0%;
+  }
+  
+  .category-link {
+    list-style: none;
+    color: rgba(0, 0, 0, 0.61);
+    font: 400 0.8vmax "Roboto";
+    margin: 0.4vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+  .category-link:hover {
+    color: tomato;
+  }
+  
+  .filterBox > fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.329);
+  }
+  
+  @media screen and (max-width: 600px) {
+    .filterBox {
+      width: 20vmax;
+      position: static;
+      margin: auto;
+    }
+  
+    .page-link {
+      font: 300 1.7vmax "Roboto";
+    }
+    .category-link {
+      font: 400 1.8vmax "Roboto";
+    }
   }

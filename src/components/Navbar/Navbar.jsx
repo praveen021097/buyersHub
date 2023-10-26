@@ -34,7 +34,9 @@ const Navbar = () => {
               <CgShoppingCart className={styles.cart} />
             </li>
             <li>
+              <Link to="/login-signUp">
               <CgProfile className={styles.profile} />
+              </Link>
             </li>
           </ul>
           {/* hamburger menu start */}

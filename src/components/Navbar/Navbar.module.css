@@ -18,6 +18,8 @@ li {
     height: 70px;
     display: grid;
     position: fixed;
+    top: 0;
+    left: 0;
     background-color: #da7b83;
     z-index: 99;
     grid-template-columns: 5rem 1fr 2fr 1fr 5rem;
@@ -29,7 +31,6 @@ li {
     grid-column: 2/3;
     justify-content: start;
     align-items: center;
-
 }
 
 .logo>h2 {
@@ -63,10 +64,6 @@ li {
 
 .iconsContainer {
     grid-column: 4/5;
-
-
-
-
 }
 
 .iconsContainer>ul {

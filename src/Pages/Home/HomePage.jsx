@@ -6,12 +6,7 @@ import MetaData from '../../components/MetaData/MetaData';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../Redux/ProductReducer/action';
 import Loader from '../../components/Loader/Loader';
-const product = {
 
-    name:"sjdsadjs",
-    price:467346,
-    _id:4455
-};
 
 const HomePage = () => {
   const {isLoading, products} = useSelector((store)=>store.ProductReducer);

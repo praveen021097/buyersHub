@@ -4,6 +4,7 @@ import HomePage from './Home/HomePage';
 import ProductDetails from './ProductDetails/ProductDetails';
 import Products from './Products/Products';
 import Search from '../components/Search/Search';
+import LoginSignup from '../components/User/LoginSignup/LoginSignup';
 const MainRoutes = () => {
   return (
         <Routes>
@@ -12,6 +13,7 @@ const MainRoutes = () => {
             <Route path = "/products" element={<Products />} />
             <Route path = "/products/:keyword" element={<Products />} />
             <Route path = "/searchProducts" element={<Search />} />
+            <Route path='/login-signUp' element={<LoginSignup />} />
         </Routes>
   )
 }
