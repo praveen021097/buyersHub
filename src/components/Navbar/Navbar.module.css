@@ -35,7 +35,6 @@ li {
 
 .logo>h2 {
     font-size: 35px;
-    border: 1px solid black;
     padding: 3px;
     background: linear-gradient(rgb(168, 147, 147) rgb(159, 159, 185) rgb(166, 203, 166));
     -webkit-background-clip: text;
@@ -72,7 +71,6 @@ li {
     grid-template-columns: 3fr repeat(3, 1fr);
     justify-content: flex-end;
     align-items: center;
-
 }
 
 .search {
@@ -92,12 +90,67 @@ li {
 
 .iconsContainer>ul>li {
     text-align: right;
+    padding-top: 15px;
+  padding-bottom: 16px;
+    
 }
-
+.iconsContainer>ul>li>a{
+    text-decoration: none;
+    color: black;
+}
 .hamburgerMenu {
     display: none;
 }
 
+.profileDiv{
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 15vmax;
+    height: 15vmax;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 99;
+    display: none;
+    text-align: center;
+}
+.profileHover:hover .profileDiv{
+        display: block;
+}
+.innerMenu{
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: white;
+    border-radius: 10px;
+}
+.innerMenu>ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.innerMenu>ul>li{
+    width: 100%;
+    height: 39px;
+    margin-top: 4px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font: 400 1.3vmax "Roboto";
+    border-radius: 10px;
+    padding-left: 15px;
+    cursor: pointer;
+
+}
+.innerMenu>ul>li>a{
+    text-decoration: none;
+    color: black;
+    font: 400 1.3vmax "Roboto";
+    margin-left: 3px;
+   
+
+}
 /* media queries */
 @media screen and (min-width:1080px) {
 

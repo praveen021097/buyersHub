@@ -4,10 +4,18 @@ import { CgProfile, CgSearch, CgShoppingCart } from "react-icons/cg";
 import {GiHamburgerMenu} from "react-icons/gi";
 import {RxCross2} from "react-icons/rx";
 import { Link } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { ShoppingCart,ListAlt,Person,ExitToAppSharp, ListAltOutlined,LoginSharp } from '@mui/icons-material';
+import { userLogout } from '../../Redux/AuthReducer/action';
 
 const Navbar = () => {
-  const [showMediaIcons, setShowMediaIcons] = useState(false)
+  const [showMediaIcons, setShowMediaIcons] = useState(false);
+  const {isAuth} = useSelector((state)=>state.AuthReducer);
+  const dispatch = useDispatch();
+
+  const handleLogOut =()=>{
+      dispatch(userLogout())
+  }
   return (
     <>
       <nav className={styles.mainNav}>
@@ -33,10 +41,20 @@ const Navbar = () => {
             <li>
               <CgShoppingCart className={styles.cart} />
             </li>
-            <li>
-              <Link to="/login-signUp">
+            <li className={styles.profileHover}>
+              <Link to={isAuth?"#":"/login-signUp"}>
               <CgProfile className={styles.profile} />
               </Link>
+              <div className={styles.profileDiv}>
+                      <div className={styles.innerMenu}>
+                        <ul>
+                          <li><ShoppingCart />Orders</li>
+                          <li><Person /> <Link to={"/me"}>Me</Link></li>
+                          <li><ListAltOutlined /> Dashboard</li>
+                          {isAuth?(<li onClick={handleLogOut}> <ExitToAppSharp /> Logout</li>):<li ><LoginSharp /><Link to={"/login-signUp"}>  Login</Link></li>}
+                        </ul>
+                      </div>
+              </div>
             </li>
           </ul>
           {/* hamburger menu start */}

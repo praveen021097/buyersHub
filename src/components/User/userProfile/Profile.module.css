@@ -1,0 +1,123 @@
+.profileContainer{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    max-width: 100%;
+    background-color: white;
+}
+.profileContainer>div{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.profileContainer>div:first-child>h1{
+    color: rgba(0, 0, 0, 0.515);
+    font: 400 2.2vmax "Roboto";
+    transform: translateX(-10vmax) translateY(-2vmax);
+
+}
+.profileContainer>div:first-child>img{
+    width: 20vmax;
+    height: 20vmax;
+    border-radius: 100%;
+    transition: all 0.5s;
+}
+.profileContainer>div:first-child>a{
+    border: none;
+    text-decoration: none;
+    background-color: tomato;
+    text-align: center;
+    width: 30%;
+    padding: 0.5vmax;
+    color: white;
+    font: 300 1.2vmax "Roboto";
+    margin: 4vmax;
+    transition: all 0.5s;
+
+}
+
+.profileContainer>div:first-child>a:hover{
+    background-color: rgba(92, 75, 75, 0.766);
+}
+
+.profileContainer>div:last-child{
+        justify-content: space-evenly;
+        align-items: flex-start;
+        
+        padding: 5vmax;
+}
+.profileContainer>div:last-child>div{
+    display: flex;
+    width: 100%;
+ 
+    flex-direction: column;
+    height: 50px;
+}
+
+.profileContainer>div:last-child>div>h4{
+    font: 400 1.4vmax "Roboto";
+
+}
+.profileContainer>div:last-child>div>p{
+    font: 300 1vmax "Roboto";
+    color: gray;
+    margin-left:10px ;
+}
+
+.profileContainer>div:last-child>div>a{
+    border: none;
+    text-decoration: none;
+    background-color: tomato;
+    text-align: center;
+    width: 30%;
+    padding: 0.5vmax 1vmax;
+    color: white;
+    font: 300 1.2vmax "Roboto";
+    margin-left: 5vmax;
+    transition: all 0.5s;
+    height: 38px;
+}
+.profileContainer>div:last-child>div:last-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileContainer>div:last-child>div>a:hover{
+    background-color: rgb(138, 214, 214);
+}
+
+@media screen and (max-width :600px) {
+    .profileContainer{
+        flex-direction: column;
+    }
+    .profileContainer>div:last-child{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .profileContainer>div:last-child>div>h4{
+        font: 400 3vmax "Roboto";
+        text-align: center;
+    }
+    .profileContainer>div:last-child>div>p{
+        font: 400 2vmax "Roboto";
+        text-align: center;
+    }
+    .profileContainer>div:last-child>div>a{
+        font: 400 1.7vmax "Roboto";
+        width: 50%;
+        padding: 5px 10px;
+    }
+}
