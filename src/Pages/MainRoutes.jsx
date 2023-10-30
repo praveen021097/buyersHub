@@ -10,6 +10,7 @@ import Profile from '../components/User/userProfile/Profile';
 import UpdateUserProfile from '../components/User/UpdateUserProfile/UpdateUserProfile';
 import UpdatePassword from '../components/User/UpdatePassword/UpdatePassword';
 import ForgotPassword from '../components/User/ForgotPassword/ForgotPassword';
+import Cart from './Cart/Cart';
 const MainRoutes = () => {
   return (
         <Routes>
@@ -23,6 +24,7 @@ const MainRoutes = () => {
            <Route path="/password/update"  element ={<RequireAuth><UpdatePassword /></RequireAuth>} />
             <Route path='/update-profile' element={<RequireAuth><UpdateUserProfile /></RequireAuth>} />
             <Route path='/forgot-password' element={<RequireAuth><ForgotPassword /></RequireAuth>} />
+            <Route path='/cart' element={<Cart />} />
         </Routes>
   )
 }

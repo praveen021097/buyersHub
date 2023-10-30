@@ -39,7 +39,7 @@ const Navbar = () => {
               <Link to={"/searchProducts"}><CgSearch className={styles.search} /></Link>
             </li>
             <li>
-              <CgShoppingCart className={styles.cart} />
+              <Link to={"/cart"}><CgShoppingCart className={styles.cart} /></Link>
             </li>
             <li className={styles.profileHover}>
               <Link to={isAuth?"#":"/login-signUp"}>
