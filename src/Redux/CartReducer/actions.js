@@ -1,6 +1,8 @@
 import * as types from "./actionTypes";
 import axios from "axios";
 
+
+
 export const addProductToCart = (id,quantity) => (dispatch,getState) =>{
     
     dispatch({type:types.ADD_PRODUCT_IN_CART_REQUEST});
@@ -14,7 +16,7 @@ export const addProductToCart = (id,quantity) => (dispatch,getState) =>{
             stock: res.data.stocks,
             quantity,
         }})
-    localStorage.setItem("cartItems",JSON.stringify(getState().cart.cartItems))
+      
 
     }).catch((err)=>{
         dispatch({type:types.ADD_PRODUCT_IN_CART_FAILURE,payload:err})
@@ -25,7 +27,7 @@ export const addProductToCart = (id,quantity) => (dispatch,getState) =>{
 
 export const removeItemsFromCart =(id)=>(dispatch,getState)=>{
     dispatch({type:types.REMOVE_PRODUCT_FROM_CART_SUCCESS,payload:id})
-    localStorage.setItem("cartItems",JSON.stringify(getState().cart.cartItems))
+ 
 }
 
 export const saveShippingInfo = (data) => async (dispatch) => {

@@ -3,12 +3,13 @@ import styles from "./Cart.module.css"
 import { useDispatch, useSelector } from 'react-redux'
 import CartItemCard from './CartItemCard';
 import { Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { addProductToCart, removeItemsFromCart } from '../../Redux/CartReducer/actions';
 import { RemoveShoppingCart } from '@mui/icons-material';
 const Cart = () => {
     const dispatch = useDispatch();
-    const {isLoading,cartItems} = useSelector((state)=>state.CartReducer);
+    const {cartItems} = useSelector((state)=>state.CartReducer);
+    const navigate = useNavigate();
     
     const increaseQuantity = (id,quantity,stock) =>{
             const newQty = quantity + 1;
@@ -31,7 +32,7 @@ const Cart = () => {
     }
 
     const checkoutHandler =()=>{
-
+            navigate("/shipping",{replace:true})
     }
   return (
     <>
@@ -48,8 +49,8 @@ const Cart = () => {
                 <p>Quantity</p>
                 <p>Subtotal</p>
             </div>
-            {cartItems && cartItems.map((item)=>(
-                <div className={styles.cartContainer}>
+            {cartItems.length>0 && cartItems.map((item)=>(
+                <div className={styles.cartContainer} key={item.product}>
                     <CartItemCard item={item} deleteCartItems={deleteCartItems} />
                     <div className={styles.cartInput}>
                         <button onClick={()=>decreaseQuantity(item.product,item.quantity)}>

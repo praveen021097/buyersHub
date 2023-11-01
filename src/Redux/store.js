@@ -4,8 +4,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {reducer as ProductReducer} from "./ProductReducer/reducer";
 import  {reducer as AuthReducer} from "./AuthReducer/reducer";
 import {reducer as UserDataReducer} from "./UserDataReducer/reducer";
-import {reducer as CartReducer} from "./CartReducer/reducer"
-const reducer = combineReducers({ProductReducer,AuthReducer,UserDataReducer,CartReducer})
+import {reducer as CartReducer} from "./CartReducer/reducer";
+import {reducer as OrderReducer} from "./OrderReducer/reducer"
+const reducer = combineReducers({ProductReducer,AuthReducer,UserDataReducer,CartReducer,OrderReducer})
 
 const store = legacy_createStore(reducer,composeWithDevTools(applyMiddleware(thunk)));
 
