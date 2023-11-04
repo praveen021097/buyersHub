@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import HomePage from './Home/HomePage';
 import ProductDetails from './ProductDetails/ProductDetails';
 import Products from './Products/Products';
@@ -20,6 +20,11 @@ import axios from 'axios';
 import Payment from './Payment/Payment';
 import OrderSuccess from './Cart/OrderSuccess';
 import MyOrders from './Orders/MyOrders';
+import OrderDetails from './Orders/OrderDetails';
+import Dashboard from './AdminDashboard/Dashboard';
+import AllProducts from './AdminDashboard/AllProducts';
+import NewProduct from './AdminDashboard/NewProduct';
+import UpdateProduct from './AdminDashboard/UpdateProduct';
 const MainRoutes = () => {
   const { token } = useSelector((state) => state.AuthReducer);
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -48,21 +53,26 @@ const MainRoutes = () => {
   return (
     <Routes>
       <Route path='/' element={<HomePage />} />
-      <Route path="/product/:id" element={<RequireAuth><ProductDetails /></RequireAuth>} />
-      <Route path="/products" element={<RequireAuth><Products /></RequireAuth>} />
-      <Route path="/products/:keyword" element={<RequireAuth><Products /></RequireAuth>} />
+      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/products/:keyword" element={<Products />} />
       <Route path="/searchProducts" element={<Search />} />
       <Route path='/login-signUp' element={<LoginSignup />} />
       <Route path='/me' element={<RequireAuth><Profile /></RequireAuth>} />
       <Route path="/password/update" element={<RequireAuth><UpdatePassword /></RequireAuth>} />
       <Route path='/update-profile' element={<RequireAuth><UpdateUserProfile /></RequireAuth>} />
       <Route path='/forgot-password' element={<RequireAuth><ForgotPassword /></RequireAuth>} />
-      <Route path='/cart' element={<RequireAuth><Cart /></RequireAuth>} />
+      <Route path='/cart' element={<Cart />} />
       <Route path='/shipping' element={<RequireAuth><ShippingInfo /></RequireAuth>} />
       <Route path='/confirm-order' element={<RequireAuth><ConfirmOrder /></RequireAuth>} />
       <Route path='/process/payment' element={<Elements stripe={loadStripe(stripeApiKey)}><RequireAuth><Payment /></RequireAuth></Elements>} />
       <Route path='/success' element={<RequireAuth><OrderSuccess /></RequireAuth>} />
       <Route path='/orders' element={<RequireAuth><MyOrders /></RequireAuth>} />
+      <Route path='/orders/:id' element={<RequireAuth><OrderDetails /></RequireAuth>} />
+      <Route path='/admin/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>} />
+      <Route path='/admin/products' element={<RequireAuth><AllProducts /></RequireAuth>} />
+      <Route path='/admin/product' element={<RequireAuth><NewProduct /></RequireAuth>} />
+      <Route path ="/admin/product/:id" element={<RequireAuth><UpdateProduct /></RequireAuth>} />
     </Routes>
   )
 }

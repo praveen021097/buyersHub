@@ -41,7 +41,7 @@
 
 .detailsBlock1 > p {
     color: rgba(54,54,54,0.582);
-    font: 200 0.6vmax cursive;
+    font: 300 0.9vmax cursive;
 }
 
 .detailsBlock2{
@@ -144,6 +144,18 @@
   .submitReview:hover {
     background-color: rgb(197, 68, 45);
     transform: scale(1.1);
+  }
+  .submitDialog{
+      display: flex;
+      flex-direction: column;
+
+  }
+  .submitDialogTextArea{
+    border: 1px solid black;
+    margin: 1vmax 0;
+    outline: none;
+    padding: 1rem;
+    font: 300 1rem "Roboto";
   }
 
   /* Chrome, Safari, Edge, Opera */

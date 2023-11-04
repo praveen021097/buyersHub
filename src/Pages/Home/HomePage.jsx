@@ -18,7 +18,7 @@ const HomePage = () => {
     }
   },[products?.length,dispatch])
 
-  console.log("products",products.products)
+ 
   return (
     <>
     {

@@ -50,7 +50,7 @@ const Navbar = () => {
                         <ul>
                           <li><ShoppingCart />Orders</li>
                           <li><Person /> <Link to={"/me"}>Me</Link></li>
-                          <li><ListAltOutlined /> Dashboard</li>
+                          <li><ListAltOutlined /> <Link to={"/admin/dashboard"}>Dashboard</Link></li>
                           {isAuth?(<li onClick={handleLogOut}> <ExitToAppSharp /> Logout</li>):<li ><LoginSharp /><Link to={"/login-signUp"}>  Login</Link></li>}
                         </ul>
                       </div>

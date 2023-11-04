@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-const MataData = ({title}) => {
+const MetaData = ({title}) => {
   return (
     <Helmet>
         <title>{title}</title>
@@ -9,4 +9,4 @@ const MataData = ({title}) => {
   )
 }
 
-export default MataData
+export default MetaData

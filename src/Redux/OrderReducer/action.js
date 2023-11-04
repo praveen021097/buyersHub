@@ -36,3 +36,72 @@ export const getOrders =(token)=>(dispatch)=>{
     })
 
 }
+
+//get SingleOrder 
+
+export const getSingleOrder =(id,token)=>(dispatch)=>{
+    dispatch({type:types.GET_SINGLE_ORDER_REQUEST});
+    const config = {
+        headers:{
+            "authorization":`Bearer ${token}`,
+        },
+}
+    return axios.get(`/api/v1/order/${id}`,config).then((res)=>{
+        dispatch({type:types.GET_SINGLE_ORDER_SUCCESS,payload:res.data})
+    })
+    .catch((err)=>{
+        dispatch({type:types.GET_SINGLE_ORDER_FAILURE,payload:err})
+    })
+
+}
+
+//get all  admin users
+
+export const getAllAdminOrders =(token)=>(dispatch)=>{
+    dispatch({type:types.GET_ALL_ADMIN_ORDER_REQUEST});
+    const config = {
+        headers:{
+            "authorization":`Bearer ${token}`,
+        },
+}
+    return axios.get(`/api/v1/admin/orders`,config).then((res)=>{
+        dispatch({type:types.GET_ALL_ADMIN_ORDER_SUCCESS,payload:res.data})
+    })
+    .catch((err)=>{
+        dispatch({type:types.GET_ALL_ADMIN_ORDER_FAILURE,payload:err})
+    })
+
+}
+//  update order status 
+export const updateOrderStatus =(id,token)=>(dispatch)=>{
+    dispatch({type:types.UPDATE_ADMIN_ORDER_STATUS_REQUEST});
+    const config = {
+        headers:{
+            "authorization":`Bearer ${token}`,
+        },
+}
+    return axios.put(`/api/v1/admin/orders/${id}`,config).then((res)=>{
+        dispatch({type:types.UPDATE_ADMIN_ORDER_STATUS_SUCCESS,payload:res.data})
+    })
+    .catch((err)=>{
+        dispatch({type:types.UPDATE_ADMIN_ORDER_STATUS_FAILURE,payload:err})
+    })
+
+}
+//delete order 
+
+export const deleteOrder =(id,token)=>(dispatch)=>{
+    dispatch({type:types.DELETE_ORDER_REQUEST});
+    const config = {
+        headers:{
+            "authorization":`Bearer ${token}`,
+        },
+}
+    return axios.delete(`/api/v1/admin/orders/${id}`,config).then((res)=>{
+        dispatch({type:types.DELETE_ORDER_SUCCESS,payload:res.data})
+    })
+    .catch((err)=>{
+        dispatch({type:types.DELETE_ORDER_FAILURE,payload:err})
+    })
+
+}

@@ -35,3 +35,70 @@ export const updatePassword =(payload,token)=>(dispatch)=>{
                 dispatch({type:types.UPDATE_PASSWORD_FAILURE,payload:err})
             })
 }
+
+
+export const getAllUsers = (token)=>(dispatch)=>{
+    dispatch({type:types.GET_ALL_USERS_REQUEST});
+    const config = {
+        headers:{
+            "authorization":`Bearer ${token}`,
+        }
+    };
+    return axios.get("/api/v1/admin/users",config).then((res)=>{
+        dispatch({type:types.GET_ALL_USERS_SUCCESS,payload:res.data})
+    })
+    .catch((err)=>{
+        dispatch({type:types.GET_ALL_USERS_FAILURE,payload:err})
+    })
+}
+
+// get single user
+
+export const getSingleUser = (id,token)=>(dispatch)=>{
+    dispatch({type:types.GET_SINGLE_USER_REQUEST});
+    const config = {
+        headers:{
+            "authorization":`Bearer ${token}`,
+        }
+    };
+    return axios.get(`/api/v1/admin/users/${id}`,config).then((res)=>{
+        dispatch({type:types.GET_SINGLE_USER_SUCCESS,payload:res.data})
+    })
+    .catch((err)=>{
+        dispatch({type:types.GET_SINGLE_USER_FAILURE,payload:err})
+    })
+}
+
+// delete user
+
+export const deleteUser = (id,token)=>(dispatch)=>{
+    dispatch({type:types.DELETE_USER_REQUEST});
+    const config = {
+        headers:{
+            "authorization":`Bearer ${token}`,
+        }
+    };
+    return axios.delete(`/api/v1/admin/users/${id}`,config).then((res)=>{
+        dispatch({type:types.DELETE_USER_SUCCESS,payload:res.data})
+    })
+    .catch((err)=>{
+        dispatch({type:types.DELETE_USER_FAILURE,payload:err})
+    })
+}
+
+// update user
+export const updateUser = (id,token)=>(dispatch)=>{
+    dispatch({type:types.UPDATE_USER_REQUEST});
+    const config = {
+        headers:{
+            "Content-Type":"application/json",
+            "authorization":`Bearer ${token}`,
+        }
+    };
+    return axios.post(`/api/v1/users/${id}`,config).then((res)=>{
+        dispatch({type:types.UPDATE_USER_SUCCESS,payload:res.data})
+    })
+    .catch((err)=>{
+        dispatch({type:types.UPDATE_USER_FAILURE,payload:err})
+    })
+}
