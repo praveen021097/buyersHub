@@ -86,7 +86,7 @@ export const reducer = (state = initialState, action) => {
                 case types.GET_ALL_ADMIN_ORDER_SUCCESS:
                     return {
                         ...state,
-                        orders: payload.order,
+                        orders: payload.orders,
                         isLoading: false,
                         isError: false,
                     }

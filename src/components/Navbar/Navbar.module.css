@@ -10,7 +10,7 @@
 
 li {
     list-style: none;
-
+    
 }
 
 .mainNav {
@@ -59,6 +59,15 @@ li {
     font-weight: 450;
     cursor: pointer;
     font-family: Roboto;
+}
+
+.menuLink>ul>li>a{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 450;
+    cursor: pointer;
+    font-family: Roboto;
+    color: black;
 }
 
 .iconsContainer {
@@ -212,6 +221,14 @@ li {
     .mobileMenuLink>ul>li{
         font-size: 18px;
         font-weight: 450px;
+        text-decoration: none;
+    }
+    .mobileMenuLink>ul>li>a{
+        font-size: 18px;
+        font-weight: 450px;
+        text-decoration: none;
+        font-family:"Roboto" ;
+        color: black;
     }
 
     .iconsContainer {
@@ -295,4 +312,5 @@ li {
     .iconsContainer .hamburgerMenu {
         display: block;
     }
+    
 }

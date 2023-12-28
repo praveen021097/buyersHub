@@ -10,6 +10,8 @@ import { Button } from '@mui/material';
 import { deleteProduct } from '../../Redux/ProductReducer/action';
 import Loader from '../../components/Loader/Loader';
 import { DELETE_PRODUCT_SUCCESS } from '../../Redux/ProductReducer/actionTypes';
+import Navbar from '../../components/Navbar/Navbar';
+
 const AllProducts = () => {
     const dispatch  = useDispatch();
     const {isLoading , products} = useSelector((state)=>state.ProductReducer);
@@ -91,6 +93,7 @@ const AllProducts = () => {
       });
   return (
     <>
+  <Navbar />
         <div className={styles.dashboard}>
             <SideBar />
             <div className={styles.productListContainer}>

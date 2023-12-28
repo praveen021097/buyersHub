@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Typography } from '@mui/material'
 import { createOrder } from '../../Redux/OrderReducer/action'
+import Navbar from '../../components/Navbar/Navbar'
 
 const Payment = () => {
     const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -97,6 +98,7 @@ const Payment = () => {
     }
   return (
     <>
+    <Navbar />
     <CheckoutSteps activeStep={3} />
     <div className={styles.paymentContainer}>
         <form 
@@ -124,7 +126,6 @@ const Payment = () => {
             />
         </form>
     </div>
-
     </>
   )
 }

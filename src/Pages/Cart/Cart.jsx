@@ -6,6 +6,8 @@ import { Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { addProductToCart, removeItemsFromCart } from '../../Redux/CartReducer/actions';
 import { RemoveShoppingCart } from '@mui/icons-material';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 const Cart = () => {
     const dispatch = useDispatch();
     const {cartItems} = useSelector((state)=>state.CartReducer);
@@ -36,6 +38,7 @@ const Cart = () => {
     }
   return (
     <>
+    <Navbar />
     {cartItems.length === 0 ?(
         <div className={styles.emptyCart}>
            <RemoveShoppingCart />
@@ -79,6 +82,7 @@ const Cart = () => {
 
         </div>
     </>)}
+    <Footer />
     </>
   )
 }

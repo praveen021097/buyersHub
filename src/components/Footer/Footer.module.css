@@ -48,7 +48,11 @@
     font-size: 18px;
 
 }
-
+.head{
+    font: 500 1.3vmax "Roboto";
+    color: white;
+    font-size: 25px;
+}
 .leftPart>button{
     padding:10px 20px;
     width: 150px;
@@ -122,6 +126,7 @@
     color: white;
     font-family: Roboto;
     margin-top: 7px;
+
 }
 
 .recentNews>ul>li{
@@ -181,6 +186,7 @@
         margin: auto;
         text-align: center;
         width: 100%;
+
     }
     .recentNews{
         width: 100%;
@@ -193,10 +199,30 @@
     .socialMediaIcons{
         width: 100%;
     }
+    h3{
+        font-size: 25px;
+    }
+    .linksMenu>li{
+        font-size: 18px;
+        font-family: "Roboto";
+    }
+    .mobiMenu{
+        font-size: 18px;
+        font-family: "Roboto";
+    }
 }
 
 @media screen and (max-width:900px) {
     .rightPart{
         width: 60%;
+    }
+}
+
+@media screen and (min-width:900px) {
+    .rightPart{
+        width: 70%;
+    }
+    .leftPart{
+        width: 25%;
     }
 }

@@ -16,10 +16,10 @@ const Footer = () => {
 
                 <div className={styles.rightPart}>
                     <div className={styles.mobirise}>
-                        <h3>Mobirise</h3>
-                        <p>Phone: 7523017952</p>
-                        <p>Email: yourmail@example.com</p>
-                        <p>Address:1234 Street Name City, AA 99999</p>
+                        <p className={styles.head}>Mobirise</p>
+                        <p className={styles.mobiMenu}>Phone: 7523017952</p>
+                        <p className={styles.mobiMenu}>Email: yourmail@example.com</p>
+                        <p className={styles.mobiMenu}>Address:1234 Street Name City, AA 99999</p>
                         <div className={styles.socialMediaIcons}>
                                 <div><FaInstagram className={styles.icon}/></div>
                                 <div> <FaFacebook  className={styles.icon}/></div>
@@ -29,16 +29,16 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className={styles.recentNews}>
-                        <h3>Recent News</h3>
-                        <ul>
+                        <p  className={styles.head}>Recent News</p>
+                        <ul className={styles.linksMenu}>
                             <li>About Us</li>
                             <li>Services</li>
                             <li>Get in touch</li>
                         </ul>
                     </div>
                     <div className={styles.links}>
-                        <h3>Links</h3>
-                        <ul>
+                        <p  className={styles.head}>Links</p>
+                        <ul className={styles.linksMenu}>
                             <li>About Us</li>
                             <li>Services</li>
                             <li>Get in touch</li>

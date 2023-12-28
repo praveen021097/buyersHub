@@ -28,8 +28,8 @@ const Navbar = () => {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/products">Products</Link></li>
-            <li>Services</li>
-            <li>Contact</li>
+            <li><Link to="#">Services</Link></li>
+            <li><Link to={"#"}>About Us</Link></li>
           </ul>
         </div>
         {/* third part icons */}

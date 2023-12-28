@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { userInformation } from '../../../Redux/AuthReducer/action'
 import Loader from '../../Loader/Loader'
+import Footer from '../../Footer/Footer'
+import Navbar from '../../Navbar/Navbar'
 const Profile = () => {
     const {userDetails ,isAuth,isLoading,token} = useSelector((state)=>state.AuthReducer);
     const navigate = useNavigate();
@@ -24,6 +26,7 @@ const Profile = () => {
     console.log("userDetails",userDetails)
   return (
    <>
+   <Navbar />
     {isLoading?(<Loader />):(<div className={styles.profileContainer}>
         <div>
             <h1>My Profile</h1>
@@ -50,6 +53,7 @@ const Profile = () => {
         </div>
 
     </div>)}
+    <Footer />
     </>
   )
 }

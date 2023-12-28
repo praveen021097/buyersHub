@@ -8,6 +8,8 @@ import { useLocation, useParams } from 'react-router-dom'
 import PaginationProducts from '../../components/Pagination/PaginationProducts'
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
 
 const categories = [
     "Laptop",
@@ -46,6 +48,7 @@ const Products = () => {
 
     return (
         <>
+        <Navbar />
             {
                 isLoading ? <Loader /> : (<>
                     <h1 className={styles.productHeading}>Products</h1>
@@ -97,6 +100,7 @@ const Products = () => {
                     {resultPerPage < count && <PaginationProducts currentPage={currentPage} resultPerPage={resultPerPage} setCurrentPage={setCurrentPage} productsCount={productsCount} />}
                 </>)
             }
+            <Footer />
         </>
     )
 }

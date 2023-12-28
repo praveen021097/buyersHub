@@ -7,6 +7,8 @@ import styles from "./ShippingInfo.module.css"
 import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import CheckoutSteps from './CheckoutSteps';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 const ShippingInfo = () => {
     const dispatch = useDispatch();
     const { shippingInfo } = useSelector((state) => state.CartReducer)
@@ -28,6 +30,7 @@ const ShippingInfo = () => {
 
     return (
         <>
+        <Navbar />
              <CheckoutSteps  activeStep={0}/>
             <div className={styles.shippingContainer}>
            
@@ -117,6 +120,7 @@ const ShippingInfo = () => {
                     </form>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

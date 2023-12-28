@@ -25,6 +25,11 @@ import Dashboard from './AdminDashboard/Dashboard';
 import AllProducts from './AdminDashboard/AllProducts';
 import NewProduct from './AdminDashboard/NewProduct';
 import UpdateProduct from './AdminDashboard/UpdateProduct';
+import OrderList from './AdminDashboard/OrderList';
+import UpdateOrderStatus from './AdminDashboard/UpdateOrderStatus';
+import UserList from './AdminDashboard/UserList';
+import UpdateUser from './AdminDashboard/UpdateUser';
+import Reviews from './AdminDashboard/Reviews';
 const MainRoutes = () => {
   const { token } = useSelector((state) => state.AuthReducer);
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -73,6 +78,11 @@ const MainRoutes = () => {
       <Route path='/admin/products' element={<RequireAuth><AllProducts /></RequireAuth>} />
       <Route path='/admin/product' element={<RequireAuth><NewProduct /></RequireAuth>} />
       <Route path ="/admin/product/:id" element={<RequireAuth><UpdateProduct /></RequireAuth>} />
+      <Route path='/admin/orders' element={<RequireAuth><OrderList /></RequireAuth>} />
+      <Route path="/admin/orders/:id" element={<RequireAuth><UpdateOrderStatus /></RequireAuth>} />
+      <Route path="/admin/users" element={<RequireAuth><UserList /></RequireAuth>} />
+      <Route path="/admin/user/:id" element={<RequireAuth><UpdateUser /></RequireAuth>} />
+      <Route path="/admin/reviews" element={<RequireAuth><Reviews /></RequireAuth>} />
     </Routes>
   )
 }

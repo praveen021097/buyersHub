@@ -1,16 +1,14 @@
 .dashboard{
     width: 100vw;
     max-width: 100%;
-
+  margin-top: 100px;
     display: grid;
     grid-template-columns:1fr 5fr;
     position: absolute;
-    
 
 }
 
 .productListContainer {
-  margin-top: 20px;
     width: 100%;
     box-sizing: border-box;
     background-color: rgb(255, 255, 255);
@@ -18,7 +16,6 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding: 4rem 0;
   }
   
   .productListHeading {
@@ -36,6 +33,7 @@
     background-color: white;
     border: none !important;
     margin: auto;
+    height: 70vh !important;
   }
   
   .productListTable div {

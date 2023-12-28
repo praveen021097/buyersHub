@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { userInformation } from '../../Redux/AuthReducer/action';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 
 
 const ConfirmOrder = () => {
@@ -39,6 +41,7 @@ const ConfirmOrder = () => {
     };
     return (
         <>
+            <Navbar />
             <CheckoutSteps activeStep={1} />
             <div className={styles.confirmOrderContainer}>
                 <div>
@@ -107,7 +110,7 @@ const ConfirmOrder = () => {
             </div>
             </div>
             {/* order summary */}
-            
+          <Footer />  
         </>
     )
 }

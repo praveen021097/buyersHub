@@ -33,7 +33,7 @@ export const getSingleProduct =(id)=>(dispatch)=>{
             dispatch({type:types.GET_SINGLE_PRODUCT_FAILURE,payload:err})
         })
 }
-
+// get all admin product
 export const getAllAdminProducts =(token)=>(dispatch)=>{
     dispatch({type:types.GET_ADMIN_PRODUCTS_REQUEST});
     const config = {
@@ -73,7 +73,7 @@ export const deleteProduct =(id,token)=>(dispatch)=>{
 
 // update product
 
-export const updateProduct =(id,token)=>(dispatch)=>{
+export const updateProduct =(id,payload,token)=>(dispatch)=>{
 
     dispatch({type:types.UPDATE_PRODUCT_REQUEST});
     const config ={
@@ -82,7 +82,7 @@ export const updateProduct =(id,token)=>(dispatch)=>{
             "authorization":`Bearer ${token}`,
         },
     }
-    return axios.put(`/admin/product/${id}`,config).then((res)=>{
+    return axios.patch(`/api/v1/admin/product/${id}`,payload,config).then((res)=>{
         dispatch({type:types.UPDATE_PRODUCT_SUCCESS,payload:res.data})
         return types.UPDATE_PRODUCT_SUCCESS;
     })

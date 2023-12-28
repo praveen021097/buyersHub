@@ -20,9 +20,9 @@ function App() {
   return (
     <div className="App">
       {/* <MainRoutes /> */}
-      <Navbar />
+
           <MainRoutes />
-      <Footer />
+
     </div>
   );
 }

@@ -6,6 +6,8 @@ import MetaData from '../../components/MetaData/MetaData';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../Redux/ProductReducer/action';
 import Loader from '../../components/Loader/Loader';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 
 
 const HomePage = () => {
@@ -21,6 +23,7 @@ const HomePage = () => {
  
   return (
     <>
+    <Navbar />
     {
       isLoading?(<Loader />):(<>
       <MetaData title={"homePage"} />
@@ -38,7 +41,9 @@ const HomePage = () => {
                     })}
               </div>
       </>)
-    }</>
+    }
+    <Footer />
+    </>
   )
 }
 

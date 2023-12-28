@@ -134,6 +134,28 @@ export const reducer =(state=initialState,action)=>{
                             isLoading: false,
                             isError: true,
                             isUpdated:false
+                        } 
+                    case types.UPDATE_USER_ROLE_REQUEST:
+                        return {
+                            ...state,
+                            isLoading:true,
+                            isError:false,
+                            isUpdated:false,
+                        }          
+                    case types.UPDATE_USER_ROLE_SUCCESS:
+                        return {
+                            ...state,
+                            isLoading:false,
+                            user:payload,
+                            isError:false,
+                            isUpdated:true,
+                        } 
+                    case types.UPDATE_USER_ROLE_FAILURE:
+                        return {
+                            ...state,
+                            isLoading:false,
+                            isError:true,
+                            isUpdated:false,
                         }       
         default:
             return state;    

@@ -36,7 +36,7 @@ export const updatePassword =(payload,token)=>(dispatch)=>{
             })
 }
 
-
+// get all users
 export const getAllUsers = (token)=>(dispatch)=>{
     dispatch({type:types.GET_ALL_USERS_REQUEST});
     const config = {
@@ -61,7 +61,9 @@ export const getSingleUser = (id,token)=>(dispatch)=>{
             "authorization":`Bearer ${token}`,
         }
     };
+    console.log("token",token)
     return axios.get(`/api/v1/admin/users/${id}`,config).then((res)=>{
+
         dispatch({type:types.GET_SINGLE_USER_SUCCESS,payload:res.data})
     })
     .catch((err)=>{
@@ -79,6 +81,7 @@ export const deleteUser = (id,token)=>(dispatch)=>{
         }
     };
     return axios.delete(`/api/v1/admin/users/${id}`,config).then((res)=>{
+        console.log("deleted")
         dispatch({type:types.DELETE_USER_SUCCESS,payload:res.data})
     })
     .catch((err)=>{
@@ -87,7 +90,7 @@ export const deleteUser = (id,token)=>(dispatch)=>{
 }
 
 // update user
-export const updateUser = (id,token)=>(dispatch)=>{
+export const updateUser = (id,token,payload)=>(dispatch)=>{
     dispatch({type:types.UPDATE_USER_REQUEST});
     const config = {
         headers:{
@@ -95,10 +98,31 @@ export const updateUser = (id,token)=>(dispatch)=>{
             "authorization":`Bearer ${token}`,
         }
     };
-    return axios.post(`/api/v1/users/${id}`,config).then((res)=>{
+    return axios.patch(`/api/v1/users/${id}`,config,payload).then((res)=>{
         dispatch({type:types.UPDATE_USER_SUCCESS,payload:res.data})
     })
     .catch((err)=>{
         dispatch({type:types.UPDATE_USER_FAILURE,payload:err})
+    })
+}
+
+//update user role
+
+export const updateUserRole = (id,token,payload)=>(dispatch)=>{
+    dispatch({type:types.UPDATE_USER_ROLE_REQUEST});
+    const config = {
+        headers:{
+            "Authorization":`Bearer ${token}`,
+            "Content-Type":"application/json",
+        }
+    };
+  console.log("tokenrole",token)
+    return axios.post(`/api/v1/admin/update/role/${id}`,config,payload).then((res)=>{
+ 
+        dispatch({type:types.UPDATE_USER_ROLE_SUCCESS,payload:res.data})
+    })
+    .catch((err)=>{
+        console.log("hi")
+        dispatch({type:types.UPDATE_USER_ROLE_FAILURE,payload:err})
     })
 }

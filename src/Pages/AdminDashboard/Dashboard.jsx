@@ -18,6 +18,7 @@ import {
 import { Doughnut, Line } from 'react-chartjs-2'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllAdminProducts } from '../../Redux/ProductReducer/action'
+import Navbar from '../../components/Navbar/Navbar'
 
 ChartJS.register(
     CategoryScale,
@@ -72,7 +73,8 @@ console.log("ddjdd",outOfStock, products.length-outOfStock)
             },
         ],
     };
-    return (
+    return (<>
+        <Navbar />
         <div className={styles.dashboard}>
             <SideBar />
             <div className={styles.dashboardContainer}>
@@ -105,6 +107,7 @@ console.log("ddjdd",outOfStock, products.length-outOfStock)
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

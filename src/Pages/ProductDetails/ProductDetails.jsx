@@ -11,6 +11,8 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Rating } fro
 import { addNewReview } from '../../Redux/ReviewReducer/action';
 import Loader from '../../components/Loader/Loader';
 import MetaData from '../../components/MetaData/MetaData';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 
 
 
@@ -97,6 +99,7 @@ const ProductDetails = () => {
     }
   return (
    <>
+   <Navbar />
    {
     isLoading ? (<Loader />):( <>
       <MetaData title={`${currentProduct.name} -- BuyersHub`} />
@@ -170,6 +173,7 @@ const ProductDetails = () => {
         }
         </>)
    }
+   <Footer />
    </>
   )
 }

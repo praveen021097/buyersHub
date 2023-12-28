@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux'
 import { CgProfile } from 'react-icons/cg'
 import { loginUser, registerUser } from '../../../Redux/AuthReducer/action'
 import { USER_LOGIN_SUCCESS, USER_SIGNUP_SUCCESS } from '../../../Redux/AuthReducer/actionTypes'
+import Footer from '../../Footer/Footer'
+import Navbar from '../../Navbar/Navbar'
  
 const LoginSignup = () => {
     const dispatch = useDispatch();
@@ -111,6 +113,7 @@ const LoginSignup = () => {
 
     return (
         <>
+        <Navbar />
             <div className={styles.loginSignUpContainer}>
                 <div className={styles.loginSignUpBox}>
                     <div>
@@ -195,6 +198,7 @@ const LoginSignup = () => {
                 </div>
 
             </div>
+            <Footer />
         </>
     )
 }

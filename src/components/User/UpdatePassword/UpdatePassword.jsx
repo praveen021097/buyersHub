@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updatePassword } from '../../../Redux/UserDataReducer/action';
 import { UPDATE_PASSWORD_SUCCESS } from '../../../Redux/UserDataReducer/actionTypes';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../../Navbar/Navbar';
+import Footer from '../../Footer/Footer';
 const UpdatePassword = () => {
     const {token} = useSelector((state)=>state.AuthReducer)
     
@@ -31,6 +33,7 @@ const UpdatePassword = () => {
 
   return (
     <>
+    <Navbar />
     <div className={styles.updatePasswordContainer}>
         <div className={styles.updatePasswordBox}>
             <h2 className={styles.updatePasswordHeading}>Update Password</h2>
@@ -85,6 +88,7 @@ const UpdatePassword = () => {
         </div>
 
     </div>
+    <Footer />
     </>
   )
 }

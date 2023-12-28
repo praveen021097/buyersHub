@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getOrders } from '../../Redux/OrderReducer/action'
 import { userInformation } from '../../Redux/AuthReducer/action'
 import { GridCellParams } from '@mui/x-data-grid'
+import Navbar from '../../components/Navbar/Navbar'
+import Footer from '../../components/Footer/Footer'
 const MyOrders = () => {
     const dispatch = useDispatch();
     const {token} = useSelector((state)=>state.AuthReducer);
@@ -80,6 +82,7 @@ const MyOrders = () => {
     },[dispatch])
   return (
     <>
+    <Navbar />
         {isLoading?(
             <Loader />
         ):(
@@ -97,6 +100,7 @@ const MyOrders = () => {
                  <Typography id="myOrdersHeading">{userDetails.name}'s Orders</Typography>
             </div>
         )}
+        <Footer />
     </>
   )
 }

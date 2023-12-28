@@ -3,6 +3,7 @@ import  "./CheckoutSteps.css"
 import { Step, StepLabel, Stepper, Typography } from '@mui/material'
 import { AccountBalance, LibraryAddCheck, LocalShipping } from '@mui/icons-material'
 
+
 const CheckoutSteps = ({ activeStep }) => {
 
     const steps = [
@@ -25,6 +26,7 @@ const CheckoutSteps = ({ activeStep }) => {
     }
     return (
         <>
+    
             <div className='checkoutStepContainer'>
             <Stepper alternativeLabel activeStep={activeStep} style={stepStyles}>
                 {
@@ -40,6 +42,7 @@ const CheckoutSteps = ({ activeStep }) => {
                 }
             </Stepper>
             </div>
+           
         </>
     )
 }

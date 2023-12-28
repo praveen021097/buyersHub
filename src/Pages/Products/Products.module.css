@@ -2,7 +2,7 @@
     margin: 4vmax auto;
     width: 15vw;
     border-bottom:1px solid black;
-    padding: 1vmax;
+    padding-top: 3vmax;
     text-align: center;
     font: 500 2.5vmax "Roboto";
    
@@ -10,10 +10,12 @@
 .products{
     display: flex;
     flex-wrap: wrap;
-    padding: 0 5vmax;
-    justify-content: right;
+    padding: 0 3vmax;
+    justify-content: space-between;
     min-height: 40vh;
    
+   width: 80%;
+  margin-left: 300px;
 }
 
 .paginationBox {
@@ -70,10 +72,11 @@
   .filterBox{
     width: 10vmax;
     position: absolute;
-    top: 10vmax;
-    left: 4vmax;
-    z-index: 99;
-    border: 1px solid red;
+    top: 12vmax;
+    left: 6vmax;
+    z-index: 0;
+   
+    height: 50vh;
   }
 
   .categoryBox {
@@ -95,7 +98,12 @@
   .filterBox > fieldset {
     border: 1px solid rgba(0, 0, 0, 0.329);
   }
-  
+  .categoryBox>li{
+    margin-top: 5px;
+  }
+  .categoryBox>li:last-child{
+    margin-bottom: 10px;
+  }
   @media screen and (max-width: 600px) {
     .filterBox {
       width: 20vmax;

@@ -6,6 +6,8 @@ import { updateProfile } from '../../../Redux/UserDataReducer/action';
 import { UPDATE_PROFILE_SUCCESS } from '../../../Redux/UserDataReducer/actionTypes';
 import { userInformation } from '../../../Redux/AuthReducer/action';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../../Navbar/Navbar';
+import Footer from '../../Footer/Footer';
 
 
 const UpdateUserProfile = () => {
@@ -55,6 +57,7 @@ const UpdateUserProfile = () => {
 
   return (
     <>
+    <Navbar />
     <div className={styles.updateProfileContainer}>
         <div className={styles.updateProfileBox}>
             <h2 className={styles.updateProfileHeading}>Update Profile</h2>
@@ -106,6 +109,7 @@ const UpdateUserProfile = () => {
         </div>
 
     </div>
+    <Footer />
     </>
   )
 }

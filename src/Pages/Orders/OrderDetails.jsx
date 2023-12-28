@@ -8,6 +8,8 @@ import Loader from '../../components/Loader/Loader';
 import MetaData from '../../components/MetaData/MetaData';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 const OrderDetails = () => {
 
     const { token } = useSelector((state) => state.AuthReducer);
@@ -27,6 +29,7 @@ const OrderDetails = () => {
     console.log("singleOrder", singleOrder)
     return (
         <>
+        <Navbar />
             {isLoading ? (<Loader />) : (
                 <>
                     <MetaData title={"Order Details"} />
@@ -110,7 +113,9 @@ const OrderDetails = () => {
 
                 </>
             )}
+            <Footer />
         </>
+        
     )
 }
 

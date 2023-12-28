@@ -64,7 +64,7 @@ export const getAllAdminOrders =(token)=>(dispatch)=>{
             "authorization":`Bearer ${token}`,
         },
 }
-    return axios.get(`/api/v1/admin/orders`,config).then((res)=>{
+    return axios.get("/api/v1/admin/orders",config).then((res)=>{
         dispatch({type:types.GET_ALL_ADMIN_ORDER_SUCCESS,payload:res.data})
     })
     .catch((err)=>{
@@ -73,14 +73,14 @@ export const getAllAdminOrders =(token)=>(dispatch)=>{
 
 }
 //  update order status 
-export const updateOrderStatus =(id,token)=>(dispatch)=>{
+export const updateOrderStatus =(id,payload,token)=>(dispatch)=>{
     dispatch({type:types.UPDATE_ADMIN_ORDER_STATUS_REQUEST});
     const config = {
         headers:{
             "authorization":`Bearer ${token}`,
         },
 }
-    return axios.put(`/api/v1/admin/orders/${id}`,config).then((res)=>{
+    return axios.put(`/api/v1/admin/orders/${id}`,payload,config).then((res)=>{
         dispatch({type:types.UPDATE_ADMIN_ORDER_STATUS_SUCCESS,payload:res.data})
     })
     .catch((err)=>{
@@ -99,6 +99,7 @@ export const deleteOrder =(id,token)=>(dispatch)=>{
 }
     return axios.delete(`/api/v1/admin/orders/${id}`,config).then((res)=>{
         dispatch({type:types.DELETE_ORDER_SUCCESS,payload:res.data})
+        return types.DELETE_ORDER_SUCCESS;
     })
     .catch((err)=>{
         dispatch({type:types.DELETE_ORDER_FAILURE,payload:err})
