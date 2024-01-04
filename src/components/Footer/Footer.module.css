@@ -6,9 +6,7 @@
     height: 50vmin;
     border: 1px solid black;
     background-color: #302e2e;
-   
 
-    
 }
 
 .leftPart{
@@ -213,16 +211,64 @@
 }
 
 @media screen and (max-width:900px) {
-    .rightPart{
-        width: 60%;
+    .footerContainer{
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        padding: 10px;
+        margin: auto;
     }
+    .leftPart{
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+
+    }
+    .rightPart{
+        width: 100%;
+        margin: auto;
+        gap: 20px;
+        flex-direction: column;
+    }
+    .mobirise{
+        margin: auto;
+        text-align: center;
+        width: 100%;
+
+    }
+    .recentNews{
+        width: 100%;
+        text-align: center;
+    }
+    .links{
+        width: 100%;
+        text-align: center;
+    }
+    .socialMediaIcons{
+        width: 100%;
+    }
+    h3{
+        font-size: 25px;
+    }
+    .linksMenu>li{
+        font-size: 18px;
+        font-family: "Roboto";
+    }
+    .mobiMenu{
+        font-size: 18px;
+        font-family: "Roboto";
+    }
+
 }
 
 @media screen and (min-width:900px) {
     .rightPart{
         width: 70%;
     }
-    .leftPart{
-        width: 25%;
+    
+    .footerContainer{
+        width: 100%;
+        padding-left: 10px;
     }
 }

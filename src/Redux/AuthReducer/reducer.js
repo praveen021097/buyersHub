@@ -3,7 +3,7 @@ import * as types from "./actionTypes";
 const initialState = {
     isLoading: false,
     isError: false,
-    token: JSON.parse(localStorage.getItem("token")) || "",
+    token: localStorage.getItem("token") || "",
     userDetails: {},
     isAuth: false
 }
@@ -20,7 +20,7 @@ export const reducer = (state = initialState, action) => {
                 isError: false
             }
         case types.USER_LOGIN_SUCCESS:
-            localStorage.setItem("token", payload.token);
+            localStorage.setItem("token",payload.token);
             return {
                 ...state,
                 isAuth: true,
@@ -44,7 +44,7 @@ export const reducer = (state = initialState, action) => {
                 isError: false
             }
         case types.USER_SIGNUP_SUCCESS:
-            localStorage.setItem("token", payload.token);
+            localStorage.setItem("token",payload.token);
             return {
                 ...state,
                 isLoading: false,

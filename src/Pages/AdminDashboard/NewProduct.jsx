@@ -8,6 +8,7 @@ import { createNewProduct } from '../../Redux/ProductReducer/action'
 import { CREATE_NEW_PRODUCT_SUCCESS } from '../../Redux/ProductReducer/actionTypes'
 import { useNavigate } from 'react-router-dom'
 import MetaData from '../../components/MetaData/MetaData'
+import Navbar from '../../components/Navbar/Navbar'
 const NewProduct = () => {
     const dispatch = useDispatch();
     const { isLoading, isCreated } = useSelector((state) => state.ProductReducer);
@@ -67,6 +68,7 @@ const NewProduct = () => {
     }
     return (
         <>
+        <Navbar />
             <MetaData title={"new-product"} />
             <div className={styles.dashboard}>
                 <SideBar />

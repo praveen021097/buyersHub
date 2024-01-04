@@ -45,6 +45,7 @@ const OrderDetails = () => {
                                     <p>Name:</p>
                                     <span>{userDetails.name}</span>
                                 </div>
+                                
                                 <div>
                                     <p>Phone:</p>
                                     <span>{currentOrder.shippingInfo && currentOrder.shippingInfo?.phoneNumber}</span>

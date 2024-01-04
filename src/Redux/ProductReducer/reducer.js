@@ -95,7 +95,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isError: false,
-                isDeleted: payload.isDeleted,
+                isDeleted: true,
             }
         case types.DELETE_PRODUCT_FAILURE:
             return {

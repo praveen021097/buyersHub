@@ -116,7 +116,7 @@ li {
     top: 70px;
     right: 20px;
     width: 15vmax;
-    height: 15vmax;
+    height: auto;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     z-index: 99;
     display: none;

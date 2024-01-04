@@ -14,13 +14,13 @@ import Navbar from '../../components/Navbar/Navbar';
 
 const AllProducts = () => {
   const dispatch = useDispatch();
-  const { isLoading, products } = useSelector((state) => state.ProductReducer);
+  const { isLoading, products,isDeleted } = useSelector((state) => state.ProductReducer);
   const { token } = useSelector((state) => state.AuthReducer);
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllAdminProducts(token))
-  }, [dispatch])
+  }, [dispatch,isDeleted])
 
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id, token)).then((res) => {
@@ -29,6 +29,7 @@ const AllProducts = () => {
       }
     });
   };
+  console.log("products",products)
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
     {

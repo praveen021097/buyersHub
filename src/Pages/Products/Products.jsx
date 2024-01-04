@@ -95,9 +95,10 @@ const Products = () => {
 
                     </div>
                     {resultPerPage < count && <PaginationProducts currentPage={currentPage} resultPerPage={resultPerPage} setCurrentPage={setCurrentPage} productsCount={productsCount} />}
+                    <Footer />
                 </>)
             }
-            <Footer />
+          
         </>
     )
 }
