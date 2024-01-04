@@ -9,7 +9,9 @@ import { useNavigate } from 'react-router-dom'
 import { Typography } from '@mui/material'
 import { createOrder } from '../../Redux/OrderReducer/action'
 import Navbar from '../../components/Navbar/Navbar'
-
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import MetaData from '../../components/MetaData/MetaData'
 const Payment = () => {
     const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
     const dispatch = useDispatch();
@@ -73,7 +75,9 @@ const Payment = () => {
 
                 if(result.error){
                     payBtn.current.disabled = false;
-                    alert("something went wrong")
+                    toast.warning('something went wrong !',{
+                        position:toast.POSITION.TOP_CENTER
+                    })
                 }
                 else{
                     if(result.paymentIntent.status === "succeeded"){
@@ -82,22 +86,30 @@ const Payment = () => {
                             status: result.paymentIntent.status,
                           };
                           dispatch(createOrder(order,token))
+                          toast.success('Payment Successfully!',{
+                            position:toast.POSITION.TOP_CENTER
+                        })
                         navigate("/success")
                     }
                     else{
-                        alert("there is some issue while making payment")
+                        toast.warning('something went wrong while making payment!',{
+                            position:toast.POSITION.TOP_CENTER
+                        })
                     }
                 }
 
 
         }catch(err){
                 payBtn.current.disabled= false;
-                alert("something went wrong!")
+                toast.warning('something went wrong while making payment!',{
+                    position:toast.POSITION.TOP_CENTER
+                })
         }
 
     }
   return (
     <>
+    <MetaData title={"Payment"} />
     <Navbar />
     <CheckoutSteps activeStep={3} />
     <div className={styles.paymentContainer}>

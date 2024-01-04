@@ -288,6 +288,14 @@ li {
         display: block;
 
     }
+
+    .mobileMenuLink>ul>li>a{
+        font-size: 20px;
+        font-weight: 450px;
+        text-decoration: none;
+        font-family:"Roboto" ;
+        color: black;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -313,4 +321,46 @@ li {
         display: block;
     }
     
+}
+
+@media screen and (min-width:798px) {
+    .mainNav {
+        height: 100px;
+    }
+    .menuLink>ul>li>a{
+        text-decoration: none;
+        font-size: 23px;
+        font-weight: 450;
+        cursor: pointer;
+        font-family: Roboto;
+        color: black;
+        
+    }
+    .iconsContainer>ul>li>a{
+        text-decoration: none;
+        color: black;
+        
+        font-size: 30px;
+    }
+} 
+
+ @media screen and (min-width:1308px) {
+    .mainNav {
+        height: 70px;
+    }
+    .menuLink>ul>li>a{
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 450;
+        cursor: pointer;
+        font-family: Roboto;
+        color: black;
+        
+    }
+    .iconsContainer>ul>li>a{
+        text-decoration: none;
+        color: black;
+        
+        font-size: 25px;
+    }
 }

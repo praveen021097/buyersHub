@@ -44,7 +44,7 @@
 
 .detailsBlock1 > p {
     color: rgba(54,54,54,0.582);
-    font: 300 0.9vmax cursive;
+    font: 300 1.2vmax cursive;
 }
 
 .detailsBlock2{
@@ -191,7 +191,7 @@ input[type="number"] {
   width: 100vw;
   padding: 10px 10vmax;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .productDetails{
         flex-direction: column;
         height: unset;
@@ -205,18 +205,20 @@ input[type="number"] {
     }
     .detailsBlock1>p{
         text-align: center;
-        font-size: 1vmax
+        font-size: 1.2vmax;
+        color: rgb(33, 29, 29);
     }
     .detailsBlock2{
         justify-content: center;
 
     }
     .detailsBlock2>span{
-        font-size: 1.5vmax;
+        font-size: 1.7vmax;
+        color: rgb(33, 29, 29);
     }
     .detailsBlock3>h1{
         text-align: center;
-        font-size: 2.4vmax;
+        font-size: 2.6vmax;
     }
     .detailsBlock31{
         flex-direction: column;
@@ -230,18 +232,21 @@ input[type="number"] {
     }
     .detailsBlock311>input{
         padding: 1.5vmax;
-        width:3vmax;
+        width:4vmax;
         font: 400 1.8vmax "Roboto";
     }
-    .detailsBlock311 > buttom:last-child{
-        font: 400 1.8vmax "Roboto";
-        padding: 1.2vmax;
-        width: 20vmax;
-        margin: 3vmax 0;
-    }
+   
     .Carousel{
         width: 100%;
         margin: auto;
+    }
+    .submitReview{
+      padding: 15px 20x;
+      font-size: 18px;
+    }
+    .detailsBlock31>.addToCartButton{
+      padding: 15px 20x;
+      font-size: 18px;
     }
 }
 

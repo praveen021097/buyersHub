@@ -8,6 +8,7 @@ import { getSingleProduct, updateProduct } from '../../Redux/ProductReducer/acti
 import { useNavigate, useParams } from 'react-router-dom'
 import { UPDATE_PRODUCT_SUCCESS } from '../../Redux/ProductReducer/actionTypes'
 import Loader from '../../components/Loader/Loader'
+import MetaData from '../../components/MetaData/MetaData'
 
 const UpdateProduct = () => {
     const dispatch = useDispatch();
@@ -65,7 +66,6 @@ console.log("id",id)
     console.log("myform",name,price,description,category,stock,images)
             dispatch(updateProduct(id,myForm,token)).then((res)=>{
                 if(res === UPDATE_PRODUCT_SUCCESS){
-                    console.log("product update successfully")
                    navigate("/admin/dashboard",{replace:true})
                 }
             })
@@ -90,6 +90,7 @@ console.log("id",id)
     }
   return (
     <>
+    <MetaData title={"Update product"} />
     <div className={styles.dashboard}>
         <SideBar />
        {isLoading?(<Loader />):( <div className={styles.newProductContainer}>

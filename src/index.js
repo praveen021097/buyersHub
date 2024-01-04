@@ -5,9 +5,10 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './Redux/store';
+import { ToastContainer } from 'react-toastify';
 
-axios.defaults.baseURL="http://localhost:5000"
-axios.defaults.headers.post["Content-Type"]="application/json";
+axios.defaults.baseURL="https://wowowo.cyclic.app"
+// axios.defaults.headers.post["Content-Type"]="application/json";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,7 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <App />
+        <ToastContainer />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

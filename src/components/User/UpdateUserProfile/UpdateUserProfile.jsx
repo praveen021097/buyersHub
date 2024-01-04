@@ -8,7 +8,8 @@ import { userInformation } from '../../../Redux/AuthReducer/action';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
-
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateUserProfile = () => {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const UpdateUserProfile = () => {
   useEffect(()=>{
     dispatch(userInformation())
   },[dispatch])
-  console.log("token",userDetails)
+
     const updateProfileSubmit = (e) => {
         e.preventDefault();
        if(name && email && avatar){
@@ -34,7 +35,15 @@ const UpdateUserProfile = () => {
         
         dispatch(updateProfile(myForm,token)).then((res)=>{
             if(res === UPDATE_PROFILE_SUCCESS){
+              toast.success("Profile update successfully!",{
+                position:toast.POSITION.TOP_CENTER
+              })
                navigate("/me",{replace:true})
+            }
+            else{
+              toast.warning("Something went wrong!",{
+                position:toast.POSITION.TOP_CENTER
+              })
             }
         })
        }

@@ -9,6 +9,7 @@ import { Delete } from '@mui/icons-material';
 import { deleteReview, getAllProductReview } from '../../Redux/ReviewReducer/action';
 import { DELETE_REVIEW_SUCCESS } from '../../Redux/ReviewReducer/actionTypes';
 import Loader from '../../components/Loader/Loader';
+import MetaData from '../../components/MetaData/MetaData';
 const Reviews = () => {
     const [productId, setProductId] = useState("");
     const {isLoading,reviews,isDeleted} = useSelector((state)=>state.ReviewReducer);
@@ -24,7 +25,7 @@ const Reviews = () => {
             e.preventDefault()
             dispatch(getAllProductReview(productId))
     }
-    console.log("reviews",reviews)
+
     const deleteReviewHandler =(reviewId)=>{
             dispatch(deleteReview(productId,reviewId,token)).then((res)=>{
               if(res == DELETE_REVIEW_SUCCESS){
@@ -72,9 +73,7 @@ const Reviews = () => {
               <Fragment>
                 <Button
                   onClick={() =>
-                   
                     deleteReviewHandler(productId,params.id,token)
-                    
                   }
                 >
                   <Delete />
@@ -103,6 +102,7 @@ const Reviews = () => {
           }
     return (
         <>
+        <MetaData title={"Reviews"} />
             <div className={styles.dashboard}>
                 <SideBar />
                 <div className={styles.productReviewsContainer}>

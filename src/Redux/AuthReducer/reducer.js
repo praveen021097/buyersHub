@@ -3,7 +3,7 @@ import * as types from "./actionTypes";
 const initialState = {
     isLoading: false,
     isError: false,
-    token: "",
+    token: JSON.parse(localStorage.getItem("token")) || "",
     userDetails: {},
     isAuth: false
 }
@@ -20,7 +20,7 @@ export const reducer = (state = initialState, action) => {
                 isError: false
             }
         case types.USER_LOGIN_SUCCESS:
-            console.log("payload",payload.token)
+            localStorage.setItem("token", payload.token);
             return {
                 ...state,
                 isAuth: true,
@@ -44,6 +44,7 @@ export const reducer = (state = initialState, action) => {
                 isError: false
             }
         case types.USER_SIGNUP_SUCCESS:
+            localStorage.setItem("token", payload.token);
             return {
                 ...state,
                 isLoading: false,
@@ -58,49 +59,50 @@ export const reducer = (state = initialState, action) => {
                 isError: true
             }
 
-            case types.LOAD_USER_REQUEST:
-                return {
-                    ...state,
-                    isLoading: true,
-                    isError: false
-                }
-            case types.LOAD_USER_SUCCESS:
-                return {
-                    ...state,
-                    isLoading: false,
-                    isError: false,
-                    token: payload.token,
-                    userDetails: payload.user
-                }
-            case types.LOAD_USER_FAILURE:
-                return {
-                    ...state,
-                    isLoading: false,
-                    isError: true
-                }
+        case types.LOAD_USER_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+                isError: false
+            }
+        case types.LOAD_USER_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                isError: false,
+                token: payload.token,
+                userDetails: payload.user
+            }
+        case types.LOAD_USER_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                isError: true
+            }
 
-                case types.USER_LOGOUT_REQUEST:
-                    return {
-                        ...state,
-                        isLoading: true,
-                        isError: false
-                    }
-                case types.USER_LOGOUT_SUCCESS:
-                    return {
-                        ...state,
-                        isLoading: false,
-                        isError: false,
-                        isAuth:false,
-                        
-                    }
-                case types.USER_LOGOUT_FAILURE:
-                    return {
-                        ...state,
-                        isLoading: false,
-                        isError: true
-                    }    
-                default:
-                    return state;
+        case types.USER_LOGOUT_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+                isError: false
+            }
+        case types.USER_LOGOUT_SUCCESS:
+            localStorage.removeItem("token");
+            return {
+                ...state,
+                isLoading: false,
+                isError: false,
+                isAuth: false,
+
+            }
+        case types.USER_LOGOUT_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                isError: true
+            }
+        default:
+            return state;
     }
 
 }

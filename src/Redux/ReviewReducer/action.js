@@ -47,8 +47,6 @@ export const deleteReview = (productId,reviewId,token)=>(dispatch)=>{
     }
 
     return axios.delete(`/api/v1/reviews?productId=${productId}&id=${reviewId}`,config).then((res)=>{
-       console.log("review deleddddd")
-       
         dispatch({type:types.DELETE_REVIEW_SUCCESS,payload:res.data})
         return types.DELETE_REVIEW_SUCCESS;
     }).catch((err)=>{

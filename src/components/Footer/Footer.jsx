@@ -18,8 +18,8 @@ const Footer = () => {
                     <div className={styles.mobirise}>
                         <p className={styles.head}>Mobirise</p>
                         <p className={styles.mobiMenu}>Phone: 7523017952</p>
-                        <p className={styles.mobiMenu}>Email: yourmail@example.com</p>
-                        <p className={styles.mobiMenu}>Address:1234 Street Name City, AA 99999</p>
+                        <p className={styles.mobiMenu}>Email: praveen7523017052@gmail.com</p>
+                        <p className={styles.mobiMenu}>Address:1234 terminal, AA 4545</p>
                         <div className={styles.socialMediaIcons}>
                                 <div><FaInstagram className={styles.icon}/></div>
                                 <div> <FaFacebook  className={styles.icon}/></div>

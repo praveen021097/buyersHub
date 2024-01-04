@@ -15,7 +15,7 @@ const Profile = () => {
         if(isAuth===false){
             navigate("/login-signUp")
         }
-        else{}
+        
     },[isAuth])
     useEffect(()=>{
       

@@ -8,7 +8,9 @@ import { loginUser, registerUser } from '../../../Redux/AuthReducer/action'
 import { USER_LOGIN_SUCCESS, USER_SIGNUP_SUCCESS } from '../../../Redux/AuthReducer/actionTypes'
 import Footer from '../../Footer/Footer'
 import Navbar from '../../Navbar/Navbar'
- 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const LoginSignup = () => {
     const dispatch = useDispatch();
     const loginTab = useRef(null);
@@ -26,7 +28,7 @@ const LoginSignup = () => {
     const [avatar, setAvatar] = useState("/Profile.png");
     const [avatarPreview, setAvatarPreview] = useState("/Profile.png")
     const location = useLocation();
-    const commingFrom = location?.state?.from?.pathname || "/";
+    const comingFrom = location?.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
     const loginSubmit = (e) => {
@@ -36,9 +38,17 @@ const LoginSignup = () => {
                 email: loginEmail,
                 password: loginPassword
             }
+        
             dispatch(loginUser(payload)).then((res) => {
                 if (res === USER_LOGIN_SUCCESS) {
-                  navigate(commingFrom,{replace:true})
+                    toast.success("Login SuccessFully !", {
+                        position: toast.POSITION.TOP_CENTER
+                    })
+                    navigate(comingFrom, { replace: true })
+                } else {
+                    toast.error("Email or Password not match !", {
+                        position: toast.POSITION.TOP_CENTER
+                    })
                 }
             })
         }
@@ -67,11 +77,10 @@ const LoginSignup = () => {
 
 
     }
-   
+
     const registerSubmit = (e) => {
         e.preventDefault();
         const myForm = new FormData();
-
         myForm.set("name", name);
         myForm.set("email", email);
         myForm.set("password", password);
@@ -81,8 +90,16 @@ const LoginSignup = () => {
 
         dispatch(registerUser(myForm)).then((res) => {
             if (res === USER_SIGNUP_SUCCESS) {
-                navigate("/login-signUp",{replace:true})
-               setTab("login")
+                toast.success("Register SuccessFully !", {
+                    position: toast.POSITION.TOP_CENTER
+                })
+                navigate("/login-signUp", { replace: true })
+                setTab("login")
+            }
+            else {
+                toast.error("something went wrong !", {
+                    position: toast.POSITION.TOP_CENTER
+                })
             }
         });
 
@@ -113,7 +130,7 @@ const LoginSignup = () => {
 
     return (
         <>
-        <Navbar />
+            <Navbar />
             <div className={styles.loginSignUpContainer}>
                 <div className={styles.loginSignUpBox}>
                     <div>
@@ -198,7 +215,7 @@ const LoginSignup = () => {
                 </div>
 
             </div>
-            <Footer />
+
         </>
     )
 }

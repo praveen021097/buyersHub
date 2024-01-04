@@ -5,7 +5,6 @@ import { AccountBalance, LibraryAddCheck, LocalShipping } from '@mui/icons-mater
 
 
 const CheckoutSteps = ({ activeStep }) => {
-
     const steps = [
         {
             label: <Typography>Shipping Details</Typography>,
@@ -26,7 +25,6 @@ const CheckoutSteps = ({ activeStep }) => {
     }
     return (
         <>
-    
             <div className='checkoutStepContainer'>
             <Stepper alternativeLabel activeStep={activeStep} style={stepStyles}>
                 {

@@ -9,40 +9,39 @@ import Loader from '../../components/Loader/Loader';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 
-
 const HomePage = () => {
-  const {isLoading, products} = useSelector((store)=>store.ProductReducer);
+  const { isLoading, products } = useSelector((store) => store.ProductReducer);
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    if(products?.length===0){
+  useEffect(() => {
+    if (products?.length === 0) {
       dispatch(getProducts())
     }
-  },[products?.length,dispatch])
+  }, [products?.length, dispatch])
 
- 
   return (
     <>
-    <Navbar />
-    {
-      isLoading?(<Loader />):(<>
-      <MetaData title={"homePage"} />
-              <div className={styles.banner}>
-                  <p>Welcome to BuyersHub</p>
-                  <h1>Find Amazing Products below</h1>
-                  <a href="#container">
-                     <button > Scroll <CgMouse /></button>
-                  </a>
-              </div>
-              <h2 className={styles.homeHeading} id='container'>Featured Products</h2>
-              <div className={styles.container} >
-                    {products.length!==0 && products.map((item)=>{
-                      return <ProductsCard product={item} key={item._id} />
-                    })}
-              </div>
-      </>)
-    }
-    <Footer />
+      <Navbar />
+      <MetaData title={"HomePage"} />
+      {
+        isLoading ? (<Loader />) : (<>
+          
+          <div className={styles.banner}>
+            <p>Welcome to BuyersHub</p>
+            <h1>Find Amazing Products below</h1>
+            <a href="#container">
+              <button > Scroll <CgMouse /></button>
+            </a>
+          </div>
+          <h2 className={styles.homeHeading} id='container'>Featured Products</h2>
+          <div className={styles.container} >
+            {products.length !== 0 && products.map((item) => {
+              return <ProductsCard product={item} key={item._id} />
+            })}
+          </div>
+        </>)
+      }
+      <Footer />
     </>
   )
 }

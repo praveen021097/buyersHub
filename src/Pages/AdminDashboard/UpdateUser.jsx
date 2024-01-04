@@ -3,11 +3,15 @@ import {useDispatch, useSelector} from "react-redux";
 import SideBar from './SideBar'
 import Loader from '../../components/Loader/Loader';
 import { MailOutline, Person, VerifiedUser } from '@mui/icons-material';
-import { getSingleUser, updateUser, updateUserRole } from '../../Redux/UserDataReducer/action';
+import { getSingleUser, updateUserRole } from '../../Redux/UserDataReducer/action';
 import {Button} from "@mui/material";
 import {useParams} from "react-router-dom";
 import styles from "./UpdateUser.module.css";
-
+import { UPDATE_USER_ROLE_SUCCESS } from '../../Redux/UserDataReducer/actionTypes';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from "react-router-dom";
+import MetaData from '../../components/MetaData/MetaData';
 const UpdateUser = () => {
     const {isLoading, user} = useSelector((state)=>state.UserDataReducer);
     const { token } = useSelector((state) => state.AuthReducer);
@@ -16,7 +20,7 @@ const UpdateUser = () => {
     const [email,setEmail] = useState("");
     const [role, setRole] = useState("");
     const {id} = useParams();
-    
+    const navigate = useNavigate();
     useEffect(()=>{
       if (user && user._id !== id) {
         dispatch(getSingleUser(id,token));
@@ -25,7 +29,7 @@ const UpdateUser = () => {
         setEmail(user.email);
         setRole(user.role);
       }
-    },[dispatch,user._id]);
+    },[dispatch,user,id,token]);
 
     const updateUserSubmitHandler =(e)=>{
         e.preventDefault();
@@ -35,13 +39,26 @@ const UpdateUser = () => {
           role:role
         }
 
-        console.log("payload",payload)
-        dispatch(updateUserRole(id,token,payload));
+       
+        dispatch(updateUserRole(id,token,payload)).then((res)=>{
+          if(res === UPDATE_USER_ROLE_SUCCESS){
+            toast.success("updated successfully",{
+              position:toast.POSITION.TOP_CENTER
+            })
+            navigate("/admin/users",{replace:true})
+          }
+          else{
+            toast.warning("something went wrong!",{
+              position:toast.POSITION.TOP_CENTER
+            })
+          }
+        });
 
     }
     console.log("user",user)
   return (
    <>
+   <MetaData title={"Update user"} />
    <div className={styles.dashboard}>
     <SideBar />
     <div className={styles.newProductContainer}>

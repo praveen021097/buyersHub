@@ -7,6 +7,7 @@ import { Button, Typography } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
 import { AccountTree } from '@mui/icons-material';
 import { getSingleOrder } from '../../Redux/OrderReducer/action';
+import MetaData from '../../components/MetaData/MetaData';
 
 const UpdateOrderStatus = () => {
     const { singleOrder, isLoading } = useSelector((state) => state.OrderReducer);
@@ -20,14 +21,14 @@ const UpdateOrderStatus = () => {
             dispatch(getSingleOrder(id, token))
         }
     }, [dispatch,id, token])
-    console.log("singleorder", singleOrder)
+    
     const updateOrderSubmitHandler = () => {
 
     }
 
     return (
         <>
-            {/* <MetaData title="Process Order " /> */}
+            <MetaData title={"Order status"} />
             <div className={styles.dashboard}>
                 <SideBar />
                 <div className={styles.newProductContainer}>
@@ -73,8 +74,8 @@ const UpdateOrderStatus = () => {
                                     <div>
                                         <p className={
                                             singleOrder.orderStatus && singleOrder.orderStatus === "Delivered"
-                                                ? "greenColor"
-                                                : "redColor"
+                                                ? styles.greenColor
+                                                : styles.redColor
                                         }>
                                             {singleOrder.orderStatus && singleOrder.orderStatus}
                                         </p>

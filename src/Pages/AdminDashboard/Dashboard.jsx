@@ -19,6 +19,9 @@ import { Doughnut, Line } from 'react-chartjs-2'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllAdminProducts } from '../../Redux/ProductReducer/action'
 import Navbar from '../../components/Navbar/Navbar'
+import { getAllAdminOrders } from '../../Redux/OrderReducer/action'
+import { getAllUsers } from '../../Redux/UserDataReducer/action'
+import MetaData from '../../components/MetaData/MetaData'
 
 ChartJS.register(
     CategoryScale,
@@ -36,6 +39,8 @@ ChartJS.register(
 
 const Dashboard = () => {
 const {isLoading, products} =useSelector((state)=>state.ProductReducer);
+const {orders} = useSelector((state)=>state.OrderReducer);
+const {users} = useSelector((state)=>state.UserDataReducer);
 const {token} = useSelector((state)=>state.AuthReducer);
 const dispatch = useDispatch();
 
@@ -49,8 +54,16 @@ products.forEach((item) => {
 useEffect(()=>{
     
         dispatch(getAllAdminProducts(token))
+        dispatch(getAllAdminOrders(token))
+        dispatch(getAllUsers(token))
     
-},[dispatch])
+},[dispatch,token])
+
+let totalAmount = 0;
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.totalPrice;
+    });
     const lineState = {
         labels: ["Initial Amount", "Amount Earned"],
         datasets: [
@@ -58,11 +71,11 @@ useEffect(()=>{
                 label: "TOTAL AMOUNT",
                 backgroundColor: ["tomato"],
                 hoverBackgroundColor: ["rgb(197, 73, 49)"],
-                data: [0, 4000],
+                data: [4000, totalAmount],
             },
         ],
     }
-console.log("ddjdd",outOfStock, products.length-outOfStock)
+
     const doughnutState = {
         labels: ["Out of Stock", "InStock"],
         datasets: [
@@ -75,13 +88,14 @@ console.log("ddjdd",outOfStock, products.length-outOfStock)
     };
     return (<>
         <Navbar />
+        <MetaData title={"admin Dashboard"} />
         <div className={styles.dashboard}>
             <SideBar />
             <div className={styles.dashboardContainer}>
                 <Typography component={"h1"}>Dashboard</Typography>
                 <div className={styles.dashboardSummary}>
                     <div>
-                        <p>Total Amount <br />₹4000</p>
+                        <p>Total Amount <br />₹{totalAmount}</p>
                     </div>
                     <div className={styles.dashboardSummaryBox2}>
                         <Link to={"/admin/products"}>
@@ -90,11 +104,11 @@ console.log("ddjdd",outOfStock, products.length-outOfStock)
                         </Link>
                         <Link to={"/admin/orders"}>
                             <p>Orders</p>
-                            <p>4</p>
+                            <p>{orders.length-1}</p>
                         </Link>
                         <Link to={"/admin/users"}>
                             <p>Users</p>
-                            <p>5</p>
+                            <p>{users.length}</p>
                         </Link>
 
                     </div>

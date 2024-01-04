@@ -4,11 +4,11 @@ import { saveShippingInfo } from '../../Redux/CartReducer/actions';
 import { PinDrop, Home, LocationCity, Public, Phone, TransferWithinAStation } from '@mui/icons-material';
 import { Country, State } from "country-state-city"
 import styles from "./ShippingInfo.module.css"
-import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import CheckoutSteps from './CheckoutSteps';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import MetaData from '../../components/MetaData/MetaData';
 const ShippingInfo = () => {
     const dispatch = useDispatch();
     const { shippingInfo } = useSelector((state) => state.CartReducer)
@@ -30,6 +30,7 @@ const ShippingInfo = () => {
 
     return (
         <>
+        <MetaData title={"Shipping info"} />
         <Navbar />
              <CheckoutSteps  activeStep={0}/>
             <div className={styles.shippingContainer}>

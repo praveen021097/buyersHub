@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { userInformation } from '../../Redux/AuthReducer/action';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import MetaData from '../../components/MetaData/MetaData';
 
 
 const ConfirmOrder = () => {
@@ -39,8 +40,10 @@ const ConfirmOrder = () => {
         sessionStorage.setItem("orderInfo", JSON.stringify(data));
         navigate("/process/payment")
     };
+  
     return (
         <>
+            <MetaData title={"Confirm order"} />
             <Navbar />
             <CheckoutSteps activeStep={1} />
             <div className={styles.confirmOrderContainer}>
@@ -55,7 +58,7 @@ const ConfirmOrder = () => {
                             </div>
                             <div>
                                 <p>Phone:</p>
-                                <span>{shippingInfo.phoneNo}</span>
+                                <span>{shippingInfo.phoneNumber}</span>
                             </div>
                             <div>
                                 <p>Address:</p>

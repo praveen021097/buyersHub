@@ -8,17 +8,18 @@ import { Link } from 'react-router-dom';
 import { Delete, Edit } from '@mui/icons-material';
 import { Button } from "@mui/material";
 import Navbar from '../../components/Navbar/Navbar';
+import Loader from '../../components/Loader/Loader';
+import MetaData from '../../components/MetaData/MetaData';
 const UserList = () => {
     const dispatch = useDispatch();
-    const { isLoading, users,isDeleted } = useSelector((state) => state.UserDataReducer);
+    const { isLoading, users, isDeleted,isUpdated } = useSelector((state) => state.UserDataReducer);
     const { token } = useSelector((state) => state.AuthReducer);
-
+    
     useEffect(() => {
         dispatch(getAllUsers(token))
-    }, [dispatch,isDeleted]);
+    }, [dispatch, isDeleted,isUpdated,token]);
 
     const deleteUserHandler = (id) => {
-        console.log("idd",id)
         dispatch(deleteUser(id, token))
     }
     const columns = [
@@ -83,19 +84,20 @@ const UserList = () => {
     const cellClassName = (params) => {
         if (params.field === '') {
             // Check the value of the 'status' column and return the appropriate class.
-            return params.role === 'admin' ? 'greenColor' : 'redColor';
+            return params.role === 'admin' ? styles.greenColor : styles.redColor;
         }
         return ''; // For other columns, return an empty string.
     };
     return (
         <>
+            <MetaData title={"User list"} />
             <Navbar />
             <div className={styles.dashboard}>
                 <SideBar />
 
                 <div className={styles.productListContainer}>
                     <h1 id='productListHeading' className={styles.productListHeading}> All Users</h1>
-                    <DataGrid
+                   {isLoading?(<Loader />):( <DataGrid
                         rows={rows}
                         columns={columns}
                         pageSize={10}
@@ -106,7 +108,7 @@ const UserList = () => {
                         sx={{ '--DataGrid-overlayHeight': '300px' }}
                     >
 
-                    </DataGrid>
+                    </DataGrid>)}
 
 
                 </div>

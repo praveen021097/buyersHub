@@ -8,15 +8,16 @@ import { Launch } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrders } from '../../Redux/OrderReducer/action'
 import { userInformation } from '../../Redux/AuthReducer/action'
-import { GridCellParams } from '@mui/x-data-grid'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
+import MetaData from '../../components/MetaData/MetaData'
 const MyOrders = () => {
     const dispatch = useDispatch();
-    const {token} = useSelector((state)=>state.AuthReducer);
+   
     const {userDetails} = useSelector((state)=>state.AuthReducer);
     const {orders,isLoading} = useSelector((state)=>state.OrderReducer);
-
+    const {token} = useSelector((state)=>state.AuthReducer);
+  
     const columns =[
         {field:"id",headerName:"Order ID", minWidth:300, flex:1},
         {
@@ -63,7 +64,6 @@ const MyOrders = () => {
         }
         return ''; // For other columns, return an empty string.
       };
-    console.log("orders",orders)
     const rows = [];
 
     orders &&
@@ -79,9 +79,11 @@ const MyOrders = () => {
     useEffect(()=>{
             dispatch(getOrders(token));
             dispatch(userInformation(token))
-    },[dispatch])
+    },[dispatch,token])
+
   return (
     <>
+    <MetaData title={"My orders"} />
     <Navbar />
         {isLoading?(
             <Loader />

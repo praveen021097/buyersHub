@@ -10,9 +10,9 @@ const initialState = {
     resultPerPage: 0,
     filterProductCount: 0,
     singleProduct: {},
-    isDeleted:false,
-    isEdited:false,
-    isCreated:false,
+    isDeleted: false,
+    isEdited: false,
+    isCreated: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -74,7 +74,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isError: false,
-                products:payload
+                products: payload
 
             }
         case types.GET_ADMIN_PRODUCTS_FAILURE:
@@ -86,67 +86,67 @@ export const reducer = (state = initialState, action) => {
         case types.DELETE_PRODUCT_REQUEST:
             return {
                 ...state,
-                isLoading:true,
-                isError:false,
-                isDeleted:false,
+                isLoading: true,
+                isError: false,
+                isDeleted: false,
             }
         case types.DELETE_PRODUCT_SUCCESS:
             return {
                 ...state,
-                isLoading:false,
-                isError:false,
-                isDeleted:payload.isDeleted,
-            }     
-       case types.DELETE_PRODUCT_FAILURE:
-        return {
-            ...state,
-                isLoading:false,
-                isError:true,
-                isDeleted:false,
-        } 
+                isLoading: false,
+                isError: false,
+                isDeleted: payload.isDeleted,
+            }
+        case types.DELETE_PRODUCT_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                isError: true,
+                isDeleted: false,
+            }
         case types.UPDATE_PRODUCT_REQUEST:
             return {
                 ...state,
-                isLoading:true,
-                isError:false,
-                isEdited:false,
+                isLoading: true,
+                isError: false,
+                isEdited: false,
             }
         case types.UPDATE_PRODUCT_SUCCESS:
-                return {
-                    ...state,
-                    isEdited:true,
-                    isLoading:false,
-                    isError:false,
-                }  
+            return {
+                ...state,
+                isEdited: true,
+                isLoading: false,
+                isError: false,
+            }
         case types.UPDATE_PRODUCT_FAILURE:
             return {
                 ...state,
-                isEdited:false,
-                isLoading:false,
-                isError:false,
-            } 
-            
-            case types.CREATE_NEW_PRODUCT_REQUEST:
-                return {
-                    ...state,
-                    isLoading:true,
-                    isError:false,
-                    isCreated:false,
-                }
-            case types.CREATE_NEW_PRODUCT_SUCCESS:
-                return {
-                    ...state,
-                    isLoading:false,
-                    isError:false,
-                    isCreated:true,
-                }     
-           case types.CREATE_NEW_PRODUCT_FAILURE:
+                isEdited: false,
+                isLoading: false,
+                isError: false,
+            }
+
+        case types.CREATE_NEW_PRODUCT_REQUEST:
             return {
                 ...state,
-                    isLoading:false,
-                    isError:true,
-                    isCreated:false,
-            } 
+                isLoading: true,
+                isError: false,
+                isCreated: false,
+            }
+        case types.CREATE_NEW_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                isError: false,
+                isCreated: true,
+            }
+        case types.CREATE_NEW_PRODUCT_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                isError: true,
+                isCreated: false,
+            }
         default:
             return state
     }

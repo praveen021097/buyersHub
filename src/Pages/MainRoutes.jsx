@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from './Home/HomePage';
 import ProductDetails from './ProductDetails/ProductDetails';
 import Products from './Products/Products';
@@ -30,9 +30,11 @@ import UpdateOrderStatus from './AdminDashboard/UpdateOrderStatus';
 import UserList from './AdminDashboard/UserList';
 import UpdateUser from './AdminDashboard/UpdateUser';
 import Reviews from './AdminDashboard/Reviews';
+import WebFont from 'webfontloader';
 const MainRoutes = () => {
   const { token } = useSelector((state) => state.AuthReducer);
   const [stripeApiKey, setStripeApiKey] = useState("");
+
   async function getStripeApiKey() {
     try {
       const config = {
@@ -42,7 +44,7 @@ const MainRoutes = () => {
         },
       }
       const { data } = await axios.get("/api/v1/stripeApiKey", config);
-      console.log("data", data)
+
       setStripeApiKey(data.stripeApiKey)
     } catch (err) {
       console.log(err)
@@ -50,11 +52,17 @@ const MainRoutes = () => {
   }
 
   useEffect(() => {
-    
-      getStripeApiKey()
-    
-  })
-  console.log(stripeApiKey, "stripekey")
+    WebFont.load({
+      google: {
+        families: ["Roboto", "Droid sans", "chilanka"]
+      }
+    })
+
+getStripeApiKey()
+
+  }, [token])
+  
+
   return (
     <Routes>
       <Route path='/' element={<HomePage />} />
@@ -77,7 +85,7 @@ const MainRoutes = () => {
       <Route path='/admin/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>} />
       <Route path='/admin/products' element={<RequireAuth><AllProducts /></RequireAuth>} />
       <Route path='/admin/product' element={<RequireAuth><NewProduct /></RequireAuth>} />
-      <Route path ="/admin/product/:id" element={<RequireAuth><UpdateProduct /></RequireAuth>} />
+      <Route path="/admin/product/:id" element={<RequireAuth><UpdateProduct /></RequireAuth>} />
       <Route path='/admin/orders' element={<RequireAuth><OrderList /></RequireAuth>} />
       <Route path="/admin/orders/:id" element={<RequireAuth><UpdateOrderStatus /></RequireAuth>} />
       <Route path="/admin/users" element={<RequireAuth><UserList /></RequireAuth>} />

@@ -16,7 +16,7 @@ export const addProductToCart = (id,quantity) => (dispatch,getState) =>{
             stock: res.data.stocks,
             quantity,
         }})
-      
+      return types.ADD_PRODUCT_IN_CART_SUCCESS;
 
     }).catch((err)=>{
         dispatch({type:types.ADD_PRODUCT_IN_CART_FAILURE,payload:err})

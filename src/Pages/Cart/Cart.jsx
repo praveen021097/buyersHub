@@ -8,6 +8,8 @@ import { addProductToCart, removeItemsFromCart } from '../../Redux/CartReducer/a
 import { RemoveShoppingCart } from '@mui/icons-material';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import 'react-toastify/dist/ReactToastify.css';
+import MetaData from '../../components/MetaData/MetaData';
 const Cart = () => {
     const dispatch = useDispatch();
     const {cartItems} = useSelector((state)=>state.CartReducer);
@@ -30,7 +32,9 @@ const Cart = () => {
     }
 
     const deleteCartItems = (id) =>{
-        dispatch(removeItemsFromCart(id))
+        dispatch(removeItemsFromCart(id)).then((res)=>{
+            
+        })
     }
 
     const checkoutHandler =()=>{
@@ -38,6 +42,7 @@ const Cart = () => {
     }
   return (
     <>
+    <MetaData title={"Cart"} />
     <Navbar />
     {cartItems.length === 0 ?(
         <div className={styles.emptyCart}>

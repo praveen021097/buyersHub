@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./OrderDetails.module.css";
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSingleOrder } from '../../Redux/OrderReducer/action';
+import { getOrders } from '../../Redux/OrderReducer/action';
 import { userInformation } from '../../Redux/AuthReducer/action';
 import Loader from '../../components/Loader/Loader';
 import MetaData from '../../components/MetaData/MetaData';
@@ -11,25 +11,28 @@ import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 const OrderDetails = () => {
-
-    const { token } = useSelector((state) => state.AuthReducer);
-    const { singleOrder, isLoading } = useSelector((state) => state.OrderReducer);
+    const {orders, singleOrder, isLoading } = useSelector((state) => state.OrderReducer);
+    const {token,userDetails} = useSelector((state)=>state.AuthReducer);
+    const [currentOrder,setCurrentOrder] = useState({});
     const { id } = useParams();
-
     const dispatch = useDispatch();
 
     useEffect(() => {
-
-        if (id && token) {
-            dispatch(getSingleOrder(id, token))
-        }
-
+            dispatch(getOrders(token))
+            dispatch(userInformation(token))
+        
     }, [id, token, dispatch]);
-
-    console.log("singleOrder", singleOrder)
+    useEffect(()=>{
+            if(id){
+                const currentO = orders && orders.find((item)=> item._id === id);
+            currentO && setCurrentOrder(currentO);
+            }
+    },[setCurrentOrder,id])
+  
     return (
         <>
-        <Navbar />
+            <MetaData title={"Order Details"} />
+            <Navbar />
             {isLoading ? (<Loader />) : (
                 <>
                     <MetaData title={"Order Details"} />
@@ -40,15 +43,15 @@ const OrderDetails = () => {
                             <div className={styles.orderDetailsContainerBox}>
                                 <div>
                                     <p>Name:</p>
-                                    <span>{"hsjdhskjhd"}</span>
+                                    <span>{userDetails.name}</span>
                                 </div>
                                 <div>
                                     <p>Phone:</p>
-                                    <span>{singleOrder.shippingInfo && singleOrder.shippingInfo?.phoneNumber}</span>
+                                    <span>{currentOrder.shippingInfo && currentOrder.shippingInfo?.phoneNumber}</span>
                                 </div>
                                 <div>
                                     <p>Address:</p>
-                                    <span>{singleOrder.shippingInfo && `${singleOrder.shippingInfo.address}, ${singleOrder.shippingInfo.city}, ${singleOrder.shippingInfo.state}, ${singleOrder.shippingInfo.pinCode}, ${singleOrder.shippingInfo.country}`}</span>
+                                    <span>{currentOrder.shippingInfo && currentOrder.shippingInfo?.address}</span>
                                 </div>
 
                             </div>
@@ -56,15 +59,15 @@ const OrderDetails = () => {
                             <div className={styles.orderDetailsContainerBox}>
                                 <div>
                                     <p
-                                        className={
-                                            singleOrder.paymentInfo &&
-                                                singleOrder.paymentInfo.status === "succeeded"
-                                                ? "greenColor"
-                                                : "redColor"
-                                        }
+                                        style={{
+                                            color:currentOrder.paymentInfo &&
+                                                currentOrder.paymentInfo.status === "succeeded"
+                                                ? "green"
+                                                : "red"
+                                        }}
                                     >
-                                        {singleOrder.paymentInfo &&
-                                            singleOrder.paymentInfo.status === "succeeded"
+                                        {currentOrder.paymentInfo &&
+                                            currentOrder.paymentInfo.status === "succeeded"
                                             ? "PAID"
                                             : "NOT PAID"}
                                     </p>
@@ -72,20 +75,20 @@ const OrderDetails = () => {
 
                                 <div>
                                     <p>Amount:</p>
-                                    <span>{singleOrder.totalPrice && singleOrder.totalPrice}</span>
+                                    <span>INR{currentOrder.totalPrice && currentOrder.totalPrice}</span>
                                 </div>
                             </div>
                             <Typography>Order Status</Typography>
                             <div className={styles.orderDetailsContainerBox}>
                                 <div>
                                     <p
-                                        className={
-                                            singleOrder.orderStatus && singleOrder.orderStatus === "Delivered"
-                                                ? "greenColor"
-                                                : "redColor"
-                                        }
+                                        style={{color:
+                                            currentOrder.orderStatus && currentOrder.orderStatus === "Delivered"
+                                                ? "green"
+                                                : "red"
+                                        }}
                                     >
-                                        {singleOrder.orderStatus && singleOrder.orderStatus}
+                                        {currentOrder.orderStatus && currentOrder.orderStatus}
                                     </p>
                                 </div>
                             </div>
@@ -93,8 +96,8 @@ const OrderDetails = () => {
                         <div className={styles.orderDetailsCartItems}>
                             <Typography>Order Items:</Typography>
                             <div className={styles.orderDetailsCartItemsContainer}>
-                                {singleOrder.orderItems &&
-                                    singleOrder.orderItems.map((item) => (
+                                {currentOrder.orderItems &&
+                                    currentOrder.orderItems.map((item) => (
                                         <div key={item.product}>
                                             <img src={item.image} alt="Product" />
                                             <Link to={`/product/${item.product}`}>
@@ -115,7 +118,7 @@ const OrderDetails = () => {
             )}
             <Footer />
         </>
-        
+
     )
 }
 

@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createNewProduct } from '../../Redux/ProductReducer/action'
 import { CREATE_NEW_PRODUCT_SUCCESS } from '../../Redux/ProductReducer/actionTypes'
 import { useNavigate } from 'react-router-dom'
+import MetaData from '../../components/MetaData/MetaData'
 const NewProduct = () => {
     const dispatch = useDispatch();
     const { isLoading, isCreated } = useSelector((state) => state.ProductReducer);
-    const {token} = useSelector((state)=>state.AuthReducer);
+    const { token } = useSelector((state) => state.AuthReducer);
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
@@ -28,38 +29,36 @@ const NewProduct = () => {
         "Camera",
         "SmartPhones",
     ];
-    const createProductSubmitHandler = (e)=>{
-            e.preventDefault();
-            const myForm = new FormData();
+    const createProductSubmitHandler = (e) => {
+        e.preventDefault();
+        const myForm = new FormData();
 
-            myForm.set("name",name);
-            myForm.set("price",price);
-            myForm.set("description",description);
-            myForm.set("category",category);
-            myForm.set("stocks",stock);
-            images.forEach((image)=>{
-                myForm.set("images",image)
-    })
-
-    console.log("myform",name,price,description,category,stock,images)
-            dispatch(createNewProduct(myForm,token)).then((res)=>{
-                if(res === CREATE_NEW_PRODUCT_SUCCESS){
-                   navigate("/admin/dashboard",{replace:true})
-                }
-            })
+        myForm.set("name", name);
+        myForm.set("price", price);
+        myForm.set("description", description);
+        myForm.set("category", category);
+        myForm.set("stocks", stock);
+        images.forEach((image) => {
+            myForm.set("images", image)
+        })
+        dispatch(createNewProduct(myForm, token)).then((res) => {
+            if (res === CREATE_NEW_PRODUCT_SUCCESS) {
+                navigate("/admin/dashboard", { replace: true })
+            }
+        })
     }
-    const createProductImagesChange =(e)=>{
+    const createProductImagesChange = (e) => {
         const files = Array.from(e.target.files);
 
         setImages([]);
         setImagesPreview([]);
 
-        files.forEach((file)=>{
+        files.forEach((file) => {
             const reader = new FileReader();
 
-            reader.onload= ()=>{
-                if(reader.readyState === 2){
-                    setImagesPreview((old)=>[...old,reader.result]);
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setImagesPreview((old) => [...old, reader.result]);
                     setImages((old) => [...old, reader.result]);
                 }
             };
@@ -68,6 +67,7 @@ const NewProduct = () => {
     }
     return (
         <>
+            <MetaData title={"new-product"} />
             <div className={styles.dashboard}>
                 <SideBar />
                 <div className={styles.newProductContainer}>

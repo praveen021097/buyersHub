@@ -13,19 +13,17 @@ import { DELETE_PRODUCT_SUCCESS } from '../../Redux/ProductReducer/actionTypes';
 import { deleteOrder, getAllAdminOrders } from '../../Redux/OrderReducer/action';
 import { DELETE_ORDER_SUCCESS } from '../../Redux/OrderReducer/actionTypes';
 import Navbar from '../../components/Navbar/Navbar';
+import MetaData from '../../components/MetaData/MetaData';
 const OrderList = () => {
     const dispatch = useDispatch();
     const {orders,isLoading } = useSelector((state)=>state.OrderReducer);
-
     const { token } = useSelector((state) => state.AuthReducer);
     const navigate = useNavigate();
 
     useEffect(() => {
-
         dispatch(getAllAdminOrders(token))
-
     }, [dispatch])
-    console.log("orders",orders)
+    
     const deleteOrderHandler = (id) => {
         dispatch(deleteOrder(id, token)).then((res) => {
             if (res === DELETE_ORDER_SUCCESS) {
@@ -102,6 +100,7 @@ const OrderList = () => {
     return (
         <>
         <Navbar />
+        <MetaData title={"Order list"} />
             <div className={styles.dashboard}>
                 <SideBar />
                 <div className={styles.productListContainer}>
