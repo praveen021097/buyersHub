@@ -8,7 +8,7 @@ import { store } from './Redux/store';
 import { ToastContainer } from 'react-toastify';
 
 axios.defaults.baseURL="https://buyershubb.onrender.com"
-// axios.defaults.headers.post["Content-Type"]="application/json";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
